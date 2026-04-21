@@ -654,53 +654,6 @@ function Pricing() {
   );
 }
 
-/* ---------------- TESTIMONIALS ---------------- */
-function Testimonials() {
-  const items = [
-    {
-      name: "Carolina M.",
-      country: "Colombia",
-      text: "Llevaba años intentando comer mejor sin lograrlo. Con Recetario Vital por fin tengo claridad — sé qué cocinar, ahorro tiempo y mi familia come delicioso.",
-    },
-    {
-      name: "Lucía P.",
-      country: "Argentina",
-      text: "En 3 semanas bajé 4 kilos sin pasar hambre. Las recetas son fáciles y los ingredientes los compro en el mercado de mi barrio.",
-    },
-    {
-      name: "Daniela R.",
-      country: "México",
-      text: "Lo mejor son los bonos. La guía de meal prep me cambió la vida, ya no improviso a las 7 pm pidiendo comida a domicilio.",
-    },
-  ];
-  return (
-    <section className="px-5 py-16 md:py-24 bg-white">
-      <div className="max-w-5xl mx-auto">
-        <SectionLabel>Lo que dicen quienes ya lo tienen</SectionLabel>
-        <Heading>Más de 3.500 personas ya están cocinando con Recetario Vital</Heading>
-        <div className="grid md:grid-cols-3 gap-5 mt-10">
-          {items.map((t) => (
-            <div
-              key={t.name}
-              className="rounded-2xl p-6"
-              style={{ backgroundColor: CREAM }}
-            >
-              <div className="text-yellow-500 mb-3">★★★★★</div>
-              <p className="mb-4 italic" style={{ color: INK }}>
-                “{t.text}”
-              </p>
-              <p className="font-bold" style={{ color: GREEN }}>
-                {t.name}
-              </p>
-              <p className="text-sm text-neutral-500">{t.country}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------------- URGENCY (no CTA) ---------------- */
 function FinalUrgency() {
   return (
