@@ -59,25 +59,27 @@ function Hero() {
             className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] mb-4"
             style={{ color: TERRACOTTA }}
           >
-            Raíz Saludable presenta
+            🌿 Para quien ya sabe que necesita cambiar lo que come
           </p>
           <h1
             className="font-display text-4xl md:text-6xl font-bold leading-[1.05] mb-5"
             style={{ color: GREEN }}
           >
-            Recupera tu energía con cada comida
+            ¿Quieres comer sano, sentirte mejor y proteger tu salud — pero
+            nadie te dio un plan que funcione con tu vida real?
           </h1>
           <p className="text-lg md:text-xl mb-6" style={{ color: INK }}>
-            200+ recetas saludables, prácticas y sabrosas para cuidar tu cuerpo
-            y reconectar con tu vitalidad — sin dietas extremas ni ingredientes
-            imposibles.
+            El Recetario Vital es el plan que te faltaba: más de 200 recetas
+            saludables con ingredientes de cualquier mercado, listas en 30
+            minutos, para ti y para toda tu familia. Sin dietas imposibles. Sin
+            gastar más. Resultados que sientes desde la primera semana.
           </p>
           <ul className="space-y-3 mb-6 inline-block text-left">
             {[
-              "Recetas pensadas para LATAM, con ingredientes accesibles",
-              "Desayunos, almuerzos, cenas, snacks y postres saludables",
-              "Apto para toda la familia, fácil de preparar",
-              "Descarga inmediata en PDF, lee en cualquier dispositivo",
+              "Funciona si tienes el azúcar alta o un diagnóstico reciente",
+              "Funciona si cocinas para toda tu familia",
+              "Funciona si no tienes tiempo ni energía de sobra",
+              "Funciona si ya intentaste antes y no duró",
             ].map((b) => (
               <li key={b} className="flex gap-3 items-start" style={{ color: INK }}>
                 <span style={{ color: GREEN }} className="font-bold mt-0.5">
@@ -88,8 +90,7 @@ function Hero() {
             ))}
           </ul>
           <p className="text-sm text-neutral-600">
-            Más de <strong>3.500 personas</strong> ya transformaron sus comidas
-            con Recetario Vital.
+            Descarga inmediata • PDF en español • Solo <strong>$15 USD</strong>
           </p>
         </div>
       </div>
