@@ -361,34 +361,41 @@ function ScientificEvidence() {
 function Bonuses() {
   const bonuses = [
     {
-      tag: "BONO #1",
-      title: "Guía de Meal Prep en 1 hora",
-      body: "Aprende a planear y dejar listas las comidas de toda la semana en una sola sesión de cocina. (Valor: $19 USD)",
+      tag: "🎁 BONO 1",
+      emoji: "🚦",
+      title: "El Semáforo Alimenticio",
+      body: "Sabé en segundos qué alimentos te ayudan y cuáles te frenan, sea cual sea tu objetivo: azúcar, peso, energía o inflamación. Pégalo en tu nevera y úsalo todos los días.",
+      value: "$19 USD",
     },
     {
-      tag: "BONO #2",
-      title: "Lista de compras inteligente",
-      body: "Descarga una lista organizada por categorías para que comprar saludable te tome la mitad del tiempo. (Valor: $14 USD)",
+      tag: "🎁 BONO 2",
+      emoji: "🛒",
+      title: "Mercado Inteligente",
+      body: "Tu lista de compras mensual lista para llevar al mercado desde el celular. Con sustitutos inteligentes para que siempre tengas opciones saludables sin salirte del presupuesto.",
+      value: "$14 USD",
     },
     {
-      tag: "BONO #3",
-      title: "Recetario Detox de 7 días",
-      body: "Un mini plan de 7 días para resetear tu cuerpo después de excesos, con recetas suaves y nutritivas. (Valor: $24 USD)",
+      tag: "🎁 BONO 3",
+      emoji: "📅",
+      title: "Plan de Rescate de 7 Días",
+      body: "Tu primera semana completamente planificada para que tu cuerpo empiece a sentir el cambio desde el día uno. Sin adivinar, solo seguir.",
+      value: "$24 USD",
     },
     {
-      tag: "BONO #4",
-      title: "Guía de sustituciones saludables",
-      body: "Aprende a reemplazar harinas refinadas, azúcar y lácteos sin perder sabor. (Valor: $24 USD)",
+      tag: "🎁 BONO 4",
+      emoji: "🍫",
+      title: "SOS Antojos",
+      body: "10 recetas express para los momentos de crisis, antojo o visita inesperada. Listas en 10 minutos y que no arruinan tu progreso.",
+      value: "$24 USD",
     },
   ];
   return (
     <section className="px-5 py-16 md:py-24" style={{ backgroundColor: CREAM }}>
       <div className="max-w-5xl mx-auto">
-        <SectionLabel>Bonos exclusivos</SectionLabel>
-        <Heading>4 bonos gratis al comprar hoy</Heading>
+        <SectionLabel>Bonos exclusivos — solo por hoy</SectionLabel>
+        <Heading>Tu compra incluye 4 bonos exclusivos — gratis</Heading>
         <p className="text-center text-lg mb-10" style={{ color: INK }}>
-          Por solo <strong>$15 USD</strong> hoy te llevas el Recetario Vital{" "}
-          <strong>+ estos 4 bonos</strong>:
+          Valorados en <strong>$81 USD</strong>. Tuyos sin costo adicional.
         </p>
         <div className="grid md:grid-cols-2 gap-5">
           {bonuses.map((b) => (
@@ -404,9 +411,19 @@ function Bonuses() {
                 {b.tag}
               </span>
               <h3 className="font-display font-bold text-xl mb-2" style={{ color: GREEN }}>
+                <span className="mr-2">{b.emoji}</span>
                 {b.title}
               </h3>
-              <p style={{ color: INK }}>{b.body}</p>
+              <p style={{ color: INK }} className="mb-3">
+                {b.body}
+              </p>
+              <p className="text-sm font-semibold" style={{ color: GREEN }}>
+                Valor:{" "}
+                <span className="line-through text-neutral-500 font-normal">
+                  {b.value}
+                </span>{" "}
+                <span style={{ color: TERRACOTTA }}>HOY: GRATIS</span>
+              </p>
             </div>
           ))}
         </div>
