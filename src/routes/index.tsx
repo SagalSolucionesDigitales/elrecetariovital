@@ -219,36 +219,26 @@ function Solution() {
 /* ---------------- BENEFITS ---------------- */
 function Benefits() {
   const benefits = [
-    {
-      t: "200+ recetas para cada momento del día",
-      d: "Desayunos, snacks, almuerzos, cenas y postres organizados para que nunca te quedes sin ideas.",
-    },
-    {
-      t: "Ingredientes accesibles en LATAM",
-      d: "Olvídate de listas con productos imposibles. Todo lo encuentras en tu mercado o supermercado.",
-    },
-    {
-      t: "Listas en menos de 30 minutos",
-      d: "Recetas pensadas para una vida real, con tiempos cortos y pasos simples.",
-    },
-    {
-      t: "Equilibradas y nutritivas",
-      d: "Cada plato combina proteína, fibra y grasas saludables para mantener tu energía estable.",
-    },
-    {
-      t: "Sabor que enamora",
-      d: "Saludable no significa aburrido. Comer bien también es un placer.",
-    },
-    {
-      t: "PDF interactivo en español",
-      d: "Léelo en tu celular, tablet o computador. Imprímelo si quieres. Es tuyo para siempre.",
-    },
+    "200+ recetas saludables clasificadas por objetivo: azúcar, peso, energía y digestión",
+    "Sección especial para condiciones crónicas: qué comer y qué evitar según tu situación",
+    "Recetas familiares que toda la mesa come, sin versiones separadas",
+    "Plan de alimentación semanal incluido, adaptable a cualquier agenda",
+    "Guía de sustituciones para no renunciar a los sabores que amas",
+    "Ingredientes de mercado popular, sin costos adicionales",
+    "PDF descargable, acceso inmediato, disponible en cualquier dispositivo",
   ];
   return (
     <section className="px-5 py-16 md:py-24 bg-white">
       <div className="max-w-6xl mx-auto">
         <SectionLabel>Qué incluye</SectionLabel>
-        <Heading>Todo lo que vas a tener en tus manos</Heading>
+        <Heading>Lo que encuentras dentro</Heading>
+        <p
+          className="text-center text-lg md:text-xl mx-auto -mt-2 mb-2"
+          style={{ color: INK, maxWidth: 720 }}
+        >
+          <strong>Recetario Vital:</strong> Tu plan de alimentación para una
+          vida más sana, desde hoy.
+        </p>
         <div className="grid md:grid-cols-2 gap-10 mt-10 items-center">
           <div className="flex justify-center">
             <img
@@ -258,21 +248,18 @@ function Benefits() {
               loading="lazy"
             />
           </div>
-          <ul className="space-y-5">
+          <ul className="space-y-4">
             {benefits.map((b) => (
-              <li key={b.t} className="flex gap-4 items-start">
+              <li key={b} className="flex gap-3 items-start">
                 <span
-                  className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center font-bold text-white"
+                  className="flex-shrink-0 w-7 h-7 mt-0.5 rounded-full flex items-center justify-center font-bold text-white text-sm"
                   style={{ backgroundColor: GREEN }}
                 >
                   ✓
                 </span>
-                <div>
-                  <h3 className="font-bold text-lg" style={{ color: GREEN }}>
-                    {b.t}
-                  </h3>
-                  <p style={{ color: INK }}>{b.d}</p>
-                </div>
+                <p style={{ color: INK }} className="leading-relaxed">
+                  {b}
+                </p>
               </li>
             ))}
           </ul>
