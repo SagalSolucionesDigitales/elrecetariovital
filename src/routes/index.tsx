@@ -168,22 +168,49 @@ function Pain() {
 
 /* ---------------- SOLUTION ---------------- */
 function Solution() {
+  const cards = [
+    {
+      emoji: "🌿",
+      title: "Comida real y accesible",
+      body: "Ingredientes que encuentras en cualquier mercado de barrio, sin gastar más de lo que ya gastas hoy.",
+    },
+    {
+      emoji: "⚡",
+      title: "Listo en 30 minutos",
+      body: "Recetas diseñadas para personas ocupadas, con familias que atender y sin tiempo para complicaciones en la cocina.",
+    },
+    {
+      emoji: "🎯",
+      title: "Resultados desde la primera semana",
+      body: "Más energía, mejor digestión, menos inflamación y marcadores de salud que empiezan a mejorar. Tu cuerpo lo siente.",
+    },
+  ];
   return (
     <section className="px-5 py-16 md:py-24" style={{ backgroundColor: GREEN }}>
-      <div className="max-w-3xl mx-auto text-center">
+      <div className="max-w-5xl mx-auto text-center">
         <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] mb-4 text-white/80">
           La solución
         </p>
         <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight mb-6 text-white">
-          Imagina abrir tu cocina y saber exactamente qué cocinar
+          El problema nunca fue la fuerza de voluntad. Fue no tener el plan
+          correcto para tu vida real.
         </h2>
-        <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-          Recetario Vital es el compañero de cocina que te lleva de la mano:
-          200+ recetas probadas, organizadas por momento del día y por
-          objetivo, hechas con ingredientes reales que puedes conseguir en
-          cualquier mercado de tu país. Sin contar calorías. Sin renunciar al
-          sabor. Sin sentirte a dieta.
-        </p>
+        <div className="grid md:grid-cols-3 gap-5 mt-10 text-left">
+          {cards.map((c) => (
+            <div
+              key={c.title}
+              className="rounded-2xl p-6"
+              style={{
+                backgroundColor: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.2)",
+              }}
+            >
+              <div className="text-4xl mb-3">{c.emoji}</div>
+              <h3 className="font-bold text-xl mb-2 text-white">{c.title}</h3>
+              <p className="text-white/90 leading-relaxed">{c.body}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
