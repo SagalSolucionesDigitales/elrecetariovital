@@ -100,32 +100,67 @@ function Hero() {
 
 /* ---------------- PAIN ---------------- */
 function Pain() {
-  const items = [
-    "Sientes que comes “bien” pero igual estás cansada/o todo el día",
-    "Pruebas dietas que no puedes sostener más de 2 semanas",
-    "Cocinar saludable se siente caro, complicado o aburrido",
-    "Te abruma no saber qué preparar cada día",
-    "Tu energía, tu digestión o tu peso te están pidiendo un cambio",
+  const cards = [
+    {
+      emoji: "🩺",
+      title: "Te dieron una señal de alerta médica",
+      body: "El médico te habló de azúcar, colesterol, presión o un diagnóstico nuevo y no te explicó qué comer para mejorar.",
+    },
+    {
+      emoji: "👨‍👩‍👧",
+      title: "Quieres que tu familia coma mejor",
+      body: "Sabes que puedes darles algo más sano pero entre el tiempo, el presupuesto y los gustos de todos, siempre termina siendo difícil.",
+    },
+    {
+      emoji: "😓",
+      title: "Te falta energía para llegar al final del día",
+      body: "A media tarde ya estás agotado, con la mente lenta y el cuerpo pidiendo azúcar o cafeína para seguir.",
+    },
+    {
+      emoji: "🔍",
+      title: "Buscas en internet y todo se contradice",
+      body: "Un artículo dice que sí, otro dice que no. Ya no sabes a quién creerle ni por dónde empezar de verdad.",
+    },
+    {
+      emoji: "💸",
+      title: "Crees que comer sano es caro y complicado",
+      body: "Cada vez que intentaste, te pareció que requería más plata, más tiempo o más conocimientos de los que tienes.",
+    },
+    {
+      emoji: "🔄",
+      title: "Ya lo intentaste antes y volviste a lo mismo",
+      body: "Empezaste con buena intención, duró dos semanas y regresaste a los mismos hábitos porque no era sostenible.",
+    },
   ];
   return (
     <section className="px-5 py-16 md:py-24 bg-white">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <SectionLabel>Si te identificas con esto…</SectionLabel>
-        <Heading>El problema no eres tú. Es lo que te enseñaron a comer.</Heading>
-        <ul className="space-y-4 mt-8">
-          {items.map((it) => (
-            <li
-              key={it}
-              className="flex gap-4 items-start p-4 rounded-xl"
-              style={{ backgroundColor: CREAM, color: INK }}
+        <Heading>¿Alguna de estas situaciones te suena familiar?</Heading>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+          {cards.map((c) => (
+            <div
+              key={c.title}
+              className="rounded-2xl p-6"
+              style={{ backgroundColor: CREAM }}
             >
-              <span style={{ color: TERRACOTTA }} className="text-xl">
-                ✗
-              </span>
-              <span className="text-base md:text-lg">{it}</span>
-            </li>
+              <div className="text-3xl mb-3">{c.emoji}</div>
+              <h3 className="font-bold text-lg mb-2" style={{ color: GREEN }}>
+                {c.title}
+              </h3>
+              <p style={{ color: INK }} className="leading-relaxed">
+                {c.body}
+              </p>
+            </div>
           ))}
-        </ul>
+        </div>
+        <p
+          className="text-center text-lg md:text-xl mt-10 font-semibold"
+          style={{ color: GREEN }}
+        >
+          Si te identificaste con al menos una… el Recetario Vital fue creado
+          para ti.
+        </p>
       </div>
     </section>
   );
