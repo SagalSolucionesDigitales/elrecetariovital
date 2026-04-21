@@ -780,7 +780,6 @@ function Index() {
       <ScientificEvidence />
       <Bonuses />
       <Pricing />
-      <Testimonials />
       <FinalUrgency />
       <FAQ />
       <Footer />
