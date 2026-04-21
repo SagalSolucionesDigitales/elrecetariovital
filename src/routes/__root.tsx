@@ -36,7 +36,7 @@ export const Route = createRootRoute({
           "Recetario Vital: 200+ recetas saludables en español para reconectar con tu energía. Descarga inmediata en PDF por solo $15 USD.",
       },
       { name: "author", content: "Raíz Saludable" },
-      { property: "og:title", content: "Recetario Vital — 200+ recetas saludables" },
+      { property: "og:title", content: "Recetario Vital — 200+ recetas para cuidar tu salud" },
       {
         property: "og:description",
         content:
@@ -45,6 +45,12 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Recetario Vital — 200+ recetas para cuidar tu salud" },
+      { name: "description", content: "Descubre más de 200 recetas para cuidar tu salud, la de tu familia y reconectar con tu energía. Sin dietas extremas. Acceso inmediato por solo $15 USD." },
+      { property: "og:description", content: "Descubre más de 200 recetas para cuidar tu salud, la de tu familia y reconectar con tu energía. Sin dietas extremas. Acceso inmediato por solo $15 USD." },
+      { name: "twitter:description", content: "Descubre más de 200 recetas para cuidar tu salud, la de tu familia y reconectar con tu energía. Sin dietas extremas. Acceso inmediato por solo $15 USD." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f7392b76-9520-4a84-9214-d9de15e1afce/id-preview-7e459959--5866e8a0-fa83-4cc9-8724-48f7ebb47dc7.lovable.app-1776811981581.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f7392b76-9520-4a84-9214-d9de15e1afce/id-preview-7e459959--5866e8a0-fa83-4cc9-8724-48f7ebb47dc7.lovable.app-1776811981581.png" },
     ],
     links: [
       {
