@@ -59,25 +59,27 @@ function Hero() {
             className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] mb-4"
             style={{ color: TERRACOTTA }}
           >
-            Raíz Saludable presenta
+            🌿 Para quien ya sabe que necesita cambiar lo que come
           </p>
           <h1
             className="font-display text-4xl md:text-6xl font-bold leading-[1.05] mb-5"
             style={{ color: GREEN }}
           >
-            Recupera tu energía con cada comida
+            ¿Quieres comer sano, sentirte mejor y proteger tu salud — pero
+            nadie te dio un plan que funcione con tu vida real?
           </h1>
           <p className="text-lg md:text-xl mb-6" style={{ color: INK }}>
-            200+ recetas saludables, prácticas y sabrosas para cuidar tu cuerpo
-            y reconectar con tu vitalidad — sin dietas extremas ni ingredientes
-            imposibles.
+            El Recetario Vital es el plan que te faltaba: más de 200 recetas
+            saludables con ingredientes de cualquier mercado, listas en 30
+            minutos, para ti y para toda tu familia. Sin dietas imposibles. Sin
+            gastar más. Resultados que sientes desde la primera semana.
           </p>
           <ul className="space-y-3 mb-6 inline-block text-left">
             {[
-              "Recetas pensadas para LATAM, con ingredientes accesibles",
-              "Desayunos, almuerzos, cenas, snacks y postres saludables",
-              "Apto para toda la familia, fácil de preparar",
-              "Descarga inmediata en PDF, lee en cualquier dispositivo",
+              "Funciona si tienes el azúcar alta o un diagnóstico reciente",
+              "Funciona si cocinas para toda tu familia",
+              "Funciona si no tienes tiempo ni energía de sobra",
+              "Funciona si ya intentaste antes y no duró",
             ].map((b) => (
               <li key={b} className="flex gap-3 items-start" style={{ color: INK }}>
                 <span style={{ color: GREEN }} className="font-bold mt-0.5">
@@ -88,8 +90,7 @@ function Hero() {
             ))}
           </ul>
           <p className="text-sm text-neutral-600">
-            Más de <strong>3.500 personas</strong> ya transformaron sus comidas
-            con Recetario Vital.
+            Descarga inmediata • PDF en español • Solo <strong>$15 USD</strong>
           </p>
         </div>
       </div>
@@ -99,32 +100,67 @@ function Hero() {
 
 /* ---------------- PAIN ---------------- */
 function Pain() {
-  const items = [
-    "Sientes que comes “bien” pero igual estás cansada/o todo el día",
-    "Pruebas dietas que no puedes sostener más de 2 semanas",
-    "Cocinar saludable se siente caro, complicado o aburrido",
-    "Te abruma no saber qué preparar cada día",
-    "Tu energía, tu digestión o tu peso te están pidiendo un cambio",
+  const cards = [
+    {
+      emoji: "🩺",
+      title: "Te dieron una señal de alerta médica",
+      body: "El médico te habló de azúcar, colesterol, presión o un diagnóstico nuevo y no te explicó qué comer para mejorar.",
+    },
+    {
+      emoji: "👨‍👩‍👧",
+      title: "Quieres que tu familia coma mejor",
+      body: "Sabes que puedes darles algo más sano pero entre el tiempo, el presupuesto y los gustos de todos, siempre termina siendo difícil.",
+    },
+    {
+      emoji: "😓",
+      title: "Te falta energía para llegar al final del día",
+      body: "A media tarde ya estás agotado, con la mente lenta y el cuerpo pidiendo azúcar o cafeína para seguir.",
+    },
+    {
+      emoji: "🔍",
+      title: "Buscas en internet y todo se contradice",
+      body: "Un artículo dice que sí, otro dice que no. Ya no sabes a quién creerle ni por dónde empezar de verdad.",
+    },
+    {
+      emoji: "💸",
+      title: "Crees que comer sano es caro y complicado",
+      body: "Cada vez que intentaste, te pareció que requería más plata, más tiempo o más conocimientos de los que tienes.",
+    },
+    {
+      emoji: "🔄",
+      title: "Ya lo intentaste antes y volviste a lo mismo",
+      body: "Empezaste con buena intención, duró dos semanas y regresaste a los mismos hábitos porque no era sostenible.",
+    },
   ];
   return (
     <section className="px-5 py-16 md:py-24 bg-white">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <SectionLabel>Si te identificas con esto…</SectionLabel>
-        <Heading>El problema no eres tú. Es lo que te enseñaron a comer.</Heading>
-        <ul className="space-y-4 mt-8">
-          {items.map((it) => (
-            <li
-              key={it}
-              className="flex gap-4 items-start p-4 rounded-xl"
-              style={{ backgroundColor: CREAM, color: INK }}
+        <Heading>¿Alguna de estas situaciones te suena familiar?</Heading>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+          {cards.map((c) => (
+            <div
+              key={c.title}
+              className="rounded-2xl p-6"
+              style={{ backgroundColor: CREAM }}
             >
-              <span style={{ color: TERRACOTTA }} className="text-xl">
-                ✗
-              </span>
-              <span className="text-base md:text-lg">{it}</span>
-            </li>
+              <div className="text-3xl mb-3">{c.emoji}</div>
+              <h3 className="font-bold text-lg mb-2" style={{ color: GREEN }}>
+                {c.title}
+              </h3>
+              <p style={{ color: INK }} className="leading-relaxed">
+                {c.body}
+              </p>
+            </div>
           ))}
-        </ul>
+        </div>
+        <p
+          className="text-center text-lg md:text-xl mt-10 font-semibold"
+          style={{ color: GREEN }}
+        >
+          Si te identificaste con al menos una… el Recetario Vital fue creado
+          para ti.
+        </p>
       </div>
     </section>
   );
@@ -132,22 +168,49 @@ function Pain() {
 
 /* ---------------- SOLUTION ---------------- */
 function Solution() {
+  const cards = [
+    {
+      emoji: "🌿",
+      title: "Comida real y accesible",
+      body: "Ingredientes que encuentras en cualquier mercado de barrio, sin gastar más de lo que ya gastas hoy.",
+    },
+    {
+      emoji: "⚡",
+      title: "Listo en 30 minutos",
+      body: "Recetas diseñadas para personas ocupadas, con familias que atender y sin tiempo para complicaciones en la cocina.",
+    },
+    {
+      emoji: "🎯",
+      title: "Resultados desde la primera semana",
+      body: "Más energía, mejor digestión, menos inflamación y marcadores de salud que empiezan a mejorar. Tu cuerpo lo siente.",
+    },
+  ];
   return (
     <section className="px-5 py-16 md:py-24" style={{ backgroundColor: GREEN }}>
-      <div className="max-w-3xl mx-auto text-center">
+      <div className="max-w-5xl mx-auto text-center">
         <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] mb-4 text-white/80">
           La solución
         </p>
         <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight mb-6 text-white">
-          Imagina abrir tu cocina y saber exactamente qué cocinar
+          El problema nunca fue la fuerza de voluntad. Fue no tener el plan
+          correcto para tu vida real.
         </h2>
-        <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-          Recetario Vital es el compañero de cocina que te lleva de la mano:
-          200+ recetas probadas, organizadas por momento del día y por
-          objetivo, hechas con ingredientes reales que puedes conseguir en
-          cualquier mercado de tu país. Sin contar calorías. Sin renunciar al
-          sabor. Sin sentirte a dieta.
-        </p>
+        <div className="grid md:grid-cols-3 gap-5 mt-10 text-left">
+          {cards.map((c) => (
+            <div
+              key={c.title}
+              className="rounded-2xl p-6"
+              style={{
+                backgroundColor: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.2)",
+              }}
+            >
+              <div className="text-4xl mb-3">{c.emoji}</div>
+              <h3 className="font-bold text-xl mb-2 text-white">{c.title}</h3>
+              <p className="text-white/90 leading-relaxed">{c.body}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -156,36 +219,26 @@ function Solution() {
 /* ---------------- BENEFITS ---------------- */
 function Benefits() {
   const benefits = [
-    {
-      t: "200+ recetas para cada momento del día",
-      d: "Desayunos, snacks, almuerzos, cenas y postres organizados para que nunca te quedes sin ideas.",
-    },
-    {
-      t: "Ingredientes accesibles en LATAM",
-      d: "Olvídate de listas con productos imposibles. Todo lo encuentras en tu mercado o supermercado.",
-    },
-    {
-      t: "Listas en menos de 30 minutos",
-      d: "Recetas pensadas para una vida real, con tiempos cortos y pasos simples.",
-    },
-    {
-      t: "Equilibradas y nutritivas",
-      d: "Cada plato combina proteína, fibra y grasas saludables para mantener tu energía estable.",
-    },
-    {
-      t: "Sabor que enamora",
-      d: "Saludable no significa aburrido. Comer bien también es un placer.",
-    },
-    {
-      t: "PDF interactivo en español",
-      d: "Léelo en tu celular, tablet o computador. Imprímelo si quieres. Es tuyo para siempre.",
-    },
+    "200+ recetas saludables clasificadas por objetivo: azúcar, peso, energía y digestión",
+    "Sección especial para condiciones crónicas: qué comer y qué evitar según tu situación",
+    "Recetas familiares que toda la mesa come, sin versiones separadas",
+    "Plan de alimentación semanal incluido, adaptable a cualquier agenda",
+    "Guía de sustituciones para no renunciar a los sabores que amas",
+    "Ingredientes de mercado popular, sin costos adicionales",
+    "PDF descargable, acceso inmediato, disponible en cualquier dispositivo",
   ];
   return (
     <section className="px-5 py-16 md:py-24 bg-white">
       <div className="max-w-6xl mx-auto">
         <SectionLabel>Qué incluye</SectionLabel>
-        <Heading>Todo lo que vas a tener en tus manos</Heading>
+        <Heading>Lo que encuentras dentro</Heading>
+        <p
+          className="text-center text-lg md:text-xl mx-auto -mt-2 mb-2"
+          style={{ color: INK, maxWidth: 720 }}
+        >
+          <strong>Recetario Vital:</strong> Tu plan de alimentación para una
+          vida más sana, desde hoy.
+        </p>
         <div className="grid md:grid-cols-2 gap-10 mt-10 items-center">
           <div className="flex justify-center">
             <img
@@ -195,21 +248,18 @@ function Benefits() {
               loading="lazy"
             />
           </div>
-          <ul className="space-y-5">
+          <ul className="space-y-4">
             {benefits.map((b) => (
-              <li key={b.t} className="flex gap-4 items-start">
+              <li key={b} className="flex gap-3 items-start">
                 <span
-                  className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center font-bold text-white"
+                  className="flex-shrink-0 w-7 h-7 mt-0.5 rounded-full flex items-center justify-center font-bold text-white text-sm"
                   style={{ backgroundColor: GREEN }}
                 >
                   ✓
                 </span>
-                <div>
-                  <h3 className="font-bold text-lg" style={{ color: GREEN }}>
-                    {b.t}
-                  </h3>
-                  <p style={{ color: INK }}>{b.d}</p>
-                </div>
+                <p style={{ color: INK }} className="leading-relaxed">
+                  {b}
+                </p>
               </li>
             ))}
           </ul>
@@ -311,34 +361,41 @@ function ScientificEvidence() {
 function Bonuses() {
   const bonuses = [
     {
-      tag: "BONO #1",
-      title: "Guía de Meal Prep en 1 hora",
-      body: "Aprende a planear y dejar listas las comidas de toda la semana en una sola sesión de cocina. (Valor: $19 USD)",
+      tag: "🎁 BONO 1",
+      emoji: "🚦",
+      title: "El Semáforo Alimenticio",
+      body: "Sabé en segundos qué alimentos te ayudan y cuáles te frenan, sea cual sea tu objetivo: azúcar, peso, energía o inflamación. Pégalo en tu nevera y úsalo todos los días.",
+      value: "$19 USD",
     },
     {
-      tag: "BONO #2",
-      title: "Lista de compras inteligente",
-      body: "Descarga una lista organizada por categorías para que comprar saludable te tome la mitad del tiempo. (Valor: $14 USD)",
+      tag: "🎁 BONO 2",
+      emoji: "🛒",
+      title: "Mercado Inteligente",
+      body: "Tu lista de compras mensual lista para llevar al mercado desde el celular. Con sustitutos inteligentes para que siempre tengas opciones saludables sin salirte del presupuesto.",
+      value: "$14 USD",
     },
     {
-      tag: "BONO #3",
-      title: "Recetario Detox de 7 días",
-      body: "Un mini plan de 7 días para resetear tu cuerpo después de excesos, con recetas suaves y nutritivas. (Valor: $24 USD)",
+      tag: "🎁 BONO 3",
+      emoji: "📅",
+      title: "Plan de Rescate de 7 Días",
+      body: "Tu primera semana completamente planificada para que tu cuerpo empiece a sentir el cambio desde el día uno. Sin adivinar, solo seguir.",
+      value: "$24 USD",
     },
     {
-      tag: "BONO #4",
-      title: "Guía de sustituciones saludables",
-      body: "Aprende a reemplazar harinas refinadas, azúcar y lácteos sin perder sabor. (Valor: $24 USD)",
+      tag: "🎁 BONO 4",
+      emoji: "🍫",
+      title: "SOS Antojos",
+      body: "10 recetas express para los momentos de crisis, antojo o visita inesperada. Listas en 10 minutos y que no arruinan tu progreso.",
+      value: "$24 USD",
     },
   ];
   return (
     <section className="px-5 py-16 md:py-24" style={{ backgroundColor: CREAM }}>
       <div className="max-w-5xl mx-auto">
-        <SectionLabel>Bonos exclusivos</SectionLabel>
-        <Heading>4 bonos gratis al comprar hoy</Heading>
+        <SectionLabel>Bonos exclusivos — solo por hoy</SectionLabel>
+        <Heading>Tu compra incluye 4 bonos exclusivos — gratis</Heading>
         <p className="text-center text-lg mb-10" style={{ color: INK }}>
-          Por solo <strong>$15 USD</strong> hoy te llevas el Recetario Vital{" "}
-          <strong>+ estos 4 bonos</strong>:
+          Valorados en <strong>$81 USD</strong>. Tuyos sin costo adicional.
         </p>
         <div className="grid md:grid-cols-2 gap-5">
           {bonuses.map((b) => (
@@ -354,9 +411,19 @@ function Bonuses() {
                 {b.tag}
               </span>
               <h3 className="font-display font-bold text-xl mb-2" style={{ color: GREEN }}>
+                <span className="mr-2">{b.emoji}</span>
                 {b.title}
               </h3>
-              <p style={{ color: INK }}>{b.body}</p>
+              <p style={{ color: INK }} className="mb-3">
+                {b.body}
+              </p>
+              <p className="text-sm font-semibold" style={{ color: GREEN }}>
+                Valor:{" "}
+                <span className="line-through text-neutral-500 font-normal">
+                  {b.value}
+                </span>{" "}
+                <span style={{ color: TERRACOTTA }}>HOY: GRATIS</span>
+              </p>
             </div>
           ))}
         </div>
@@ -587,53 +654,6 @@ function Pricing() {
   );
 }
 
-/* ---------------- TESTIMONIALS ---------------- */
-function Testimonials() {
-  const items = [
-    {
-      name: "Carolina M.",
-      country: "Colombia",
-      text: "Llevaba años intentando comer mejor sin lograrlo. Con Recetario Vital por fin tengo claridad — sé qué cocinar, ahorro tiempo y mi familia come delicioso.",
-    },
-    {
-      name: "Lucía P.",
-      country: "Argentina",
-      text: "En 3 semanas bajé 4 kilos sin pasar hambre. Las recetas son fáciles y los ingredientes los compro en el mercado de mi barrio.",
-    },
-    {
-      name: "Daniela R.",
-      country: "México",
-      text: "Lo mejor son los bonos. La guía de meal prep me cambió la vida, ya no improviso a las 7 pm pidiendo comida a domicilio.",
-    },
-  ];
-  return (
-    <section className="px-5 py-16 md:py-24 bg-white">
-      <div className="max-w-5xl mx-auto">
-        <SectionLabel>Lo que dicen quienes ya lo tienen</SectionLabel>
-        <Heading>Más de 3.500 personas ya están cocinando con Recetario Vital</Heading>
-        <div className="grid md:grid-cols-3 gap-5 mt-10">
-          {items.map((t) => (
-            <div
-              key={t.name}
-              className="rounded-2xl p-6"
-              style={{ backgroundColor: CREAM }}
-            >
-              <div className="text-yellow-500 mb-3">★★★★★</div>
-              <p className="mb-4 italic" style={{ color: INK }}>
-                “{t.text}”
-              </p>
-              <p className="font-bold" style={{ color: GREEN }}>
-                {t.name}
-              </p>
-              <p className="text-sm text-neutral-500">{t.country}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------------- URGENCY (no CTA) ---------------- */
 function FinalUrgency() {
   return (
@@ -760,7 +780,6 @@ function Index() {
       <ScientificEvidence />
       <Bonuses />
       <Pricing />
-      <Testimonials />
       <FinalUrgency />
       <FAQ />
       <Footer />
