@@ -441,10 +441,10 @@ function Bonuses() {
 function Pricing() {
   const valueRows = [
     { item: "Recetario Vital — 200+ recetas", value: "$35 USD" },
-    { item: "Bono #1 — Guía de Meal Prep", value: "$19 USD" },
-    { item: "Bono #2 — Lista de compras inteligente", value: "$14 USD" },
-    { item: "Bono #3 — Recetario Detox 7 días", value: "$24 USD" },
-    { item: "Bono #4 — Guía de sustituciones", value: "$24 USD" },
+    { item: "Bono #1 — 🚦 El Semáforo Alimenticio", value: "$19 USD" },
+    { item: "Bono #2 — 🛒 Mercado Inteligente", value: "$14 USD" },
+    { item: "Bono #3 — 📅 Plan de Rescate de 7 Días", value: "$24 USD" },
+    { item: "Bono #4 — 🍫 SOS Antojos", value: "$24 USD" },
   ];
   return (
     <section className="px-5 py-16 md:py-24" style={{ backgroundColor: GREEN }}>
