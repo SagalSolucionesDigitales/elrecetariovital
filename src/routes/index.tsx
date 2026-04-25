@@ -94,11 +94,8 @@ function Hero() {
             Sin ingredientes raros. Sin dietas imposibles. Sin sacrificar el
             placer de comer.
           </p>
-          <div className="mt-6">
-            <CTAButton label="QUIERO MI RECETARIO VITAL →" />
-          </div>
-          <p className="mt-4 text-sm text-neutral-600 text-center md:text-left">
-            Descarga inmediata • PDF en español • Solo <strong>$15 USD</strong>
+          <p className="mt-6 text-sm text-neutral-600 text-center md:text-left">
+            Acceso Inmediato • PDF en español • Solo <strong>$15 USD</strong>
           </p>
         </div>
       </div>
