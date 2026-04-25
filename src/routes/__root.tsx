@@ -1,6 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import heroCover from "@/assets/hero-ebook-cover.webp";
 
 function NotFoundComponent() {
   return (
@@ -57,10 +58,19 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: appCss,
       },
+      {
+        rel: "preload",
+        as: "image",
+        href: heroCover,
+        fetchpriority: "high",
+      },
+      { rel: "preconnect", href: "https://connect.facebook.net", crossOrigin: "" },
+      { rel: "dns-prefetch", href: "https://connect.facebook.net" },
+      { rel: "preconnect", href: "https://www.facebook.com", crossOrigin: "" },
     ],
     scripts: [
       {
-        children: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1235233387933244');fbq('track','PageView');`,
+        children: `window.fbq=window.fbq||function(){(window.fbq.q=window.fbq.q||[]).push(arguments)};window.fbq.loaded=true;window.fbq.version='2.0';function loadFbq(){if(window.__fbqLoaded)return;window.__fbqLoaded=true;var s=document.createElement('script');s.async=true;s.src='https://connect.facebook.net/en_US/fbevents.js';s.onload=function(){fbq('init','1235233387933244');fbq('track','PageView');};document.head.appendChild(s);}if(document.readyState==='complete'){setTimeout(loadFbq,1500);}else{window.addEventListener('load',function(){setTimeout(loadFbq,1500);});}`,
       },
     ],
   }),
