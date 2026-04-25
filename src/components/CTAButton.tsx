@@ -7,7 +7,13 @@ declare global {
   }
 }
 
-export function CTAButton({ className = "" }: { className?: string }) {
+export function CTAButton({
+  className = "",
+  label = "QUIERO MI RECETARIO VITAL →",
+}: {
+  className?: string;
+  label?: string;
+}) {
   return (
     <div className={`w-full flex justify-center ${className}`}>
       <a
@@ -19,13 +25,17 @@ export function CTAButton({ className = "" }: { className?: string }) {
             window.fbq("track", "InitiateCheckout");
           }
         }}
-        className="animate-pulse-cta inline-flex items-center justify-center w-full md:max-w-[480px] text-center text-white font-bold text-[20px] md:text-[22px] leading-tight rounded-full px-10 py-[18px] transition-transform"
+        className="inline-flex items-center justify-center w-full md:max-w-[520px] text-center text-white font-bold uppercase tracking-wide rounded-full px-8 py-4"
         style={{
           backgroundColor: "#C4622D",
-          boxShadow: "0 6px 24px rgba(196,98,45,0.35)",
+          boxShadow: "0 6px 24px rgba(196,98,45,0.45)",
+          minHeight: 56,
+          fontSize: 18,
+          lineHeight: 1.2,
+          letterSpacing: "0.02em",
         }}
       >
-        Quiero mi Recetario Vital por $15 USD →
+        {label}
       </a>
     </div>
   );

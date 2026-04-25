@@ -1,7 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import heroCover from "@/assets/hero-ebook-cover.webp";
 import benefitsMockup from "@/assets/benefits-mockup.webp";
-import { CTAButton, CTAMicrocopy } from "@/components/CTAButton";
+import catDesayunos from "@/assets/cat-desayunos.jpg";
+import catAlmuerzos from "@/assets/cat-almuerzos.jpg";
+import catCenas from "@/assets/cat-cenas.jpg";
+import catPostres from "@/assets/cat-postres.jpg";
+import testimonialCristian from "@/assets/testimonial-cristian.webp";
+import testimonialLorena from "@/assets/testimonial-lorena.webp";
+import testimonialCarlos from "@/assets/testimonial-carlos.webp";
+import testimonialLigia from "@/assets/testimonial-ligia.webp";
+import { CTAButton } from "@/components/CTAButton";
 import {
   Accordion,
   AccordionContent,
@@ -40,18 +49,29 @@ function Heading({ children }: { children: React.ReactNode }) {
   );
 }
 
+function CTAMicrocopy() {
+  return (
+    <p className="mt-4 text-center text-sm text-neutral-500">
+      Descarga inmediata • PDF en español • Acceso en menos de 2 minutos
+    </p>
+  );
+}
+
 /* ---------------- HERO ---------------- */
 function Hero() {
   return (
     <section style={{ backgroundColor: CREAM }} className="px-5 pt-10 pb-14 md:py-20">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-        {/* Image first on mobile */}
         <div className="order-1 md:order-2 flex justify-center">
           <img
             src={heroCover}
             alt="Recetario Vital — portada del ebook con ingredientes saludables"
-            className="w-full max-w-[380px] md:max-w-[460px] rounded-2xl shadow-2xl"
+            width={460}
+            height={576}
+            className="w-full max-w-[380px] md:max-w-[460px] h-auto rounded-2xl shadow-2xl"
             loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
         </div>
         <div className="order-2 md:order-1 text-center md:text-left">
@@ -59,37 +79,25 @@ function Hero() {
             className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] mb-4"
             style={{ color: TERRACOTTA }}
           >
-            🌿 Para quien ya sabe que necesita cambiar lo que come
+            🌿 Recetario Vital
           </p>
           <h1
             className="font-display text-4xl md:text-6xl font-bold leading-[1.05] mb-5"
             style={{ color: GREEN }}
           >
-            ¿Quieres comer sano, sentirte mejor y proteger tu salud — pero
-            nadie te dio un plan que funcione con tu vida real?
+            Come rico, come bien. Sin miedo y sin complicaciones.
           </h1>
           <p className="text-lg md:text-xl mb-6" style={{ color: INK }}>
-            El Recetario Vital es el plan que te faltaba: más de 200 recetas
-            saludables con ingredientes de cualquier mercado, listas en 30
-            minutos, para ti y para toda tu familia. Sin dietas imposibles. Sin
-            gastar más. Resultados que sientes desde la primera semana.
+            Si tienes el azúcar alta o te preocupa tu alimentación, el Recetario
+            Vital te muestra cómo preparar comidas deliciosas, económicas y
+            fáciles — con ingredientes que ya conoces y en menos de 30 minutos.
+            Sin ingredientes raros. Sin dietas imposibles. Sin sacrificar el
+            placer de comer.
           </p>
-          <ul className="space-y-3 mb-6 inline-block text-left">
-            {[
-              "Funciona si tienes el azúcar alta o un diagnóstico reciente",
-              "Funciona si cocinas para toda tu familia",
-              "Funciona si no tienes tiempo ni energía de sobra",
-              "Funciona si ya intentaste antes y no duró",
-            ].map((b) => (
-              <li key={b} className="flex gap-3 items-start" style={{ color: INK }}>
-                <span style={{ color: GREEN }} className="font-bold mt-0.5">
-                  ✓
-                </span>
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="text-sm text-neutral-600">
+          <div className="mt-6">
+            <CTAButton label="QUIERO MI RECETARIO VITAL →" />
+          </div>
+          <p className="mt-4 text-sm text-neutral-600 text-center md:text-left">
             Descarga inmediata • PDF en español • Solo <strong>$15 USD</strong>
           </p>
         </div>
@@ -98,58 +106,67 @@ function Hero() {
   );
 }
 
-/* ---------------- PAIN ---------------- */
+/* ---------------- PAIN + RESPONSES ---------------- */
 function Pain() {
-  const cards = [
+  const items = [
     {
-      emoji: "🩺",
-      title: "Te dieron una señal de alerta médica",
-      body: "El médico te habló de azúcar, colesterol, presión o un diagnóstico nuevo y no te explicó qué comer para mejorar.",
+      pain: "Tu médico te asustó y te dejó con más dudas que certezas",
+      answer:
+        "Si te dijeron que tienes el azúcar alta, nadie te explicó qué comer ni por dónde empezar. El Recetario Vital es tu guía práctica para aprender a alimentarte sin depender de una consulta médica para cada decisión.",
     },
     {
-      emoji: "👨‍👩‍👧",
-      title: "Quieres que tu familia coma mejor",
-      body: "Sabes que puedes darles algo más sano pero entre el tiempo, el presupuesto y los gustos de todos, siempre termina siendo difícil.",
+      pain: "Quieres comer sano pero no sabes cómo o crees que es muy caro",
+      answer:
+        "Cada receta fue creada con ingredientes accesibles, de bajo costo, que consigues en cualquier mercado local. Además incluye alternativas e ingredientes sustitutos para que siempre tengas opciones.",
     },
     {
-      emoji: "😓",
-      title: "Te falta energía para llegar al final del día",
-      body: "A media tarde ya estás agotado, con la mente lenta y el cuerpo pidiendo azúcar o cafeína para seguir.",
+      pain: "Te preocupa depender de medicamentos de por vida",
+      answer:
+        "Miles de personas han mejorado su calidad de vida cambiando su alimentación. El Recetario Vital te da las herramientas para que cada comida sea una decisión consciente a favor de tu bienestar.",
     },
     {
-      emoji: "🔍",
-      title: "Buscas en internet y todo se contradice",
-      body: "Un artículo dice que sí, otro dice que no. Ya no sabes a quién creerle ni por dónde empezar de verdad.",
+      pain: "Te preocupa terminar como un familiar",
+      answer:
+        "La buena noticia es que en este momento tienes en tus manos una herramienta que ese familiar no tuvo: información concreta, recetas probadas y un plan claro para cuidar tu alimentación desde hoy.",
     },
     {
-      emoji: "💸",
-      title: "Crees que comer sano es caro y complicado",
-      body: "Cada vez que intentaste, te pareció que requería más plata, más tiempo o más conocimientos de los que tienes.",
+      pain: "Temes llenarte de información genérica que no funcione",
+      answer:
+        "El Recetario Vital no tiene nada que ver con la información vacía que encuentras en internet. Tiene respaldo en evidencia nutricional y ha sido validado por personas reales que ya cambiaron su alimentación.",
     },
     {
-      emoji: "🔄",
-      title: "Ya lo intentaste antes y volviste a lo mismo",
-      body: "Empezaste con buena intención, duró dos semanas y regresaste a los mismos hábitos porque no era sostenible.",
+      pain: "Sientes que perdiste el control de lo que comes",
+      answer:
+        "Recuperar el control de tu alimentación es más simple de lo que crees. El Recetario Vital te muestra cómo hacerlo paso a paso, sin complicaciones y sin sacrificar el placer de comer.",
     },
   ];
   return (
     <section className="px-5 py-16 md:py-24 bg-white">
       <div className="max-w-5xl mx-auto">
         <SectionLabel>Si te identificas con esto…</SectionLabel>
-        <Heading>¿Alguna de estas situaciones te suena familiar?</Heading>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
-          {cards.map((c) => (
+        <Heading>¿Te suena familiar alguna de estas situaciones?</Heading>
+        <div className="grid md:grid-cols-2 gap-5 mt-10">
+          {items.map((c, i) => (
             <div
-              key={c.title}
+              key={c.pain}
               className="rounded-2xl p-6"
               style={{ backgroundColor: CREAM }}
             >
-              <div className="text-3xl mb-3">{c.emoji}</div>
-              <h3 className="font-bold text-lg mb-2" style={{ color: GREEN }}>
-                {c.title}
+              <p
+                className="text-xs font-bold uppercase tracking-widest mb-2"
+                style={{ color: TERRACOTTA }}
+              >
+                {`Situación ${i + 1}`}
+              </p>
+              <h3 className="font-bold text-lg mb-3" style={{ color: GREEN }}>
+                ❌ {c.pain}
               </h3>
-              <p style={{ color: INK }} className="leading-relaxed">
-                {c.body}
+              <p
+                style={{ color: INK, fontSize: 16 }}
+                className="leading-relaxed border-l-4 pl-4"
+              >
+                <span style={{ color: GREEN, fontWeight: 700 }}>✓ </span>
+                {c.answer}
               </p>
             </div>
           ))}
@@ -158,118 +175,15 @@ function Pain() {
           className="text-center text-lg md:text-xl mt-10 font-semibold"
           style={{ color: GREEN }}
         >
-          Si te identificaste con al menos una… el Recetario Vital fue creado
-          para ti.
+          Si te identificaste con al menos una… este recetario es lo que
+          buscaste por tanto tiempo.
         </p>
       </div>
     </section>
   );
 }
 
-/* ---------------- SOLUTION ---------------- */
-function Solution() {
-  const cards = [
-    {
-      emoji: "🌿",
-      title: "Comida real y accesible",
-      body: "Ingredientes que encuentras en cualquier mercado de barrio, sin gastar más de lo que ya gastas hoy.",
-    },
-    {
-      emoji: "⚡",
-      title: "Listo en 30 minutos",
-      body: "Recetas diseñadas para personas ocupadas, con familias que atender y sin tiempo para complicaciones en la cocina.",
-    },
-    {
-      emoji: "🎯",
-      title: "Resultados desde la primera semana",
-      body: "Más energía, mejor digestión, menos inflamación y marcadores de salud que empiezan a mejorar. Tu cuerpo lo siente.",
-    },
-  ];
-  return (
-    <section className="px-5 py-16 md:py-24" style={{ backgroundColor: GREEN }}>
-      <div className="max-w-5xl mx-auto text-center">
-        <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] mb-4 text-white/80">
-          La solución
-        </p>
-        <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight mb-6 text-white">
-          El problema nunca fue la fuerza de voluntad. Fue no tener el plan
-          correcto para tu vida real.
-        </h2>
-        <div className="grid md:grid-cols-3 gap-5 mt-10 text-left">
-          {cards.map((c) => (
-            <div
-              key={c.title}
-              className="rounded-2xl p-6"
-              style={{
-                backgroundColor: "rgba(255,255,255,0.08)",
-                border: "1px solid rgba(255,255,255,0.2)",
-              }}
-            >
-              <div className="text-4xl mb-3">{c.emoji}</div>
-              <h3 className="font-bold text-xl mb-2 text-white">{c.title}</h3>
-              <p className="text-white/90 leading-relaxed">{c.body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- BENEFITS ---------------- */
-function Benefits() {
-  const benefits = [
-    "200+ recetas saludables clasificadas por objetivo: azúcar, peso, energía y digestión",
-    "Sección especial para condiciones crónicas: qué comer y qué evitar según tu situación",
-    "Recetas familiares que toda la mesa come, sin versiones separadas",
-    "Plan de alimentación semanal incluido, adaptable a cualquier agenda",
-    "Guía de sustituciones para no renunciar a los sabores que amas",
-    "Ingredientes de mercado popular, sin costos adicionales",
-    "PDF descargable, acceso inmediato, disponible en cualquier dispositivo",
-  ];
-  return (
-    <section className="px-5 py-16 md:py-24 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <SectionLabel>Qué incluye</SectionLabel>
-        <Heading>Lo que encuentras dentro</Heading>
-        <p
-          className="text-center text-lg md:text-xl mx-auto -mt-2 mb-2"
-          style={{ color: INK, maxWidth: 720 }}
-        >
-          <strong>Recetario Vital:</strong> Tu plan de alimentación para una
-          vida más sana, desde hoy.
-        </p>
-        <div className="grid md:grid-cols-2 gap-10 mt-10 items-center">
-          <div className="flex justify-center">
-            <img
-              src={benefitsMockup}
-              alt="Recetario Vital mostrado en un teléfono móvil"
-              className="w-full max-w-[360px] rounded-2xl"
-              loading="lazy"
-            />
-          </div>
-          <ul className="space-y-4">
-            {benefits.map((b) => (
-              <li key={b} className="flex gap-3 items-start">
-                <span
-                  className="flex-shrink-0 w-7 h-7 mt-0.5 rounded-full flex items-center justify-center font-bold text-white text-sm"
-                  style={{ backgroundColor: GREEN }}
-                >
-                  ✓
-                </span>
-                <p style={{ color: INK }} className="leading-relaxed">
-                  {b}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- BLOCK 5B: SCIENTIFIC EVIDENCE ---------------- */
+/* ---------------- SCIENTIFIC EVIDENCE ---------------- */
 function ScientificEvidence() {
   const cards = [
     {
@@ -303,15 +217,25 @@ function ScientificEvidence() {
       <div className="max-w-5xl mx-auto">
         <SectionLabel>Evidencia científica</SectionLabel>
         <Heading>¿Por qué funciona? La ciencia detrás de cada receta</Heading>
-        <p
-          className="text-center text-base md:text-lg mx-auto"
-          style={{ color: INK, maxWidth: 680 }}
-        >
-          No son recetas inventadas. Cada ingrediente fue elegido con un
-          criterio claro: que la investigación nutricional lo respalde.
-        </p>
 
-        <div className="grid md:grid-cols-2 gap-5 mt-10">
+        <div
+          className="mx-auto mt-6 mb-10 rounded-xl p-6"
+          style={{
+            backgroundColor: CREAM,
+            borderLeft: `6px solid ${TERRACOTTA}`,
+            maxWidth: 760,
+          }}
+        >
+          <p style={{ color: INK, fontSize: 16, lineHeight: 1.7 }}>
+            Según la <strong>Federación Internacional de Diabetes</strong>,
+            América Latina tiene más de <strong>32 millones de personas</strong>{" "}
+            con diabetes. México y Colombia están entre los 10 países con mayor
+            prevalencia de la región. La alimentación es el principal factor
+            modificable asociado al desarrollo de diabetes tipo 2.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-5 mt-6">
           {cards.map((c) => (
             <div
               key={c.title}
@@ -325,7 +249,7 @@ function ScientificEvidence() {
                 <span className="mr-2">{c.emoji}</span>
                 {c.title}
               </h3>
-              <p style={{ color: INK }} className="leading-relaxed">
+              <p style={{ color: INK, fontSize: 16 }} className="leading-relaxed">
                 {c.body}
               </p>
             </div>
@@ -338,19 +262,176 @@ function ScientificEvidence() {
             backgroundColor: CREAM,
             border: `1px solid ${GREEN}`,
             padding: 20,
-            maxWidth: 680,
+            maxWidth: 720,
           }}
         >
-          <p
-            className="italic text-center"
-            style={{ color: INK }}
-          >
-            Una aclaración importante: El Recetario Vital es un recurso de
-            alimentación complementario. No reemplaza tu tratamiento médico ni
-            las indicaciones de tu médico o nutricionista. Lo que sí hace es
-            darte una herramienta práctica para que cada comida sea una
-            decisión a tu favor, no una fuente de ansiedad.
+          <p className="italic text-center" style={{ color: INK, fontSize: 16 }}>
+            El Recetario Vital es un recurso de alimentación complementario. No
+            reemplaza tu tratamiento médico ni las indicaciones de tu médico o
+            nutricionista.
           </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- BENEFITS / CATEGORIES ---------------- */
+function Benefits() {
+  const cats = [
+    { img: catDesayunos, title: "DESAYUNOS", body: "Empieza el día con energía estable" },
+    { img: catAlmuerzos, title: "ALMUERZOS", body: "Platos completos y saciantes" },
+    { img: catCenas, title: "CENAS", body: "Ligeras, sabrosas y reparadoras" },
+    { img: catPostres, title: "POSTRES Y DULCES", body: "El placer sin culpa, sin azúcar" },
+  ];
+  return (
+    <section className="px-5 py-16 md:py-24 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <SectionLabel>Qué incluye</SectionLabel>
+        <Heading>Más de 200 recetas organizadas por objetivo y condición</Heading>
+        <p
+          className="text-center text-lg md:text-xl mx-auto mb-10"
+          style={{ color: INK, maxWidth: 760 }}
+        >
+          Cada receta fue diseñada para que puedas preparar desayunos, almuerzos,
+          cenas y postres deliciosos — que funcionen para tu bienestar, tu
+          familia y tu agenda.
+        </p>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12">
+          {cats.map((c) => (
+            <div key={c.title} className="rounded-2xl overflow-hidden shadow-sm bg-white" style={{ border: `1px solid ${GREEN}20` }}>
+              <img
+                src={c.img}
+                alt={`Categoría ${c.title.toLowerCase()}`}
+                width={768}
+                height={768}
+                className="w-full h-40 md:h-56 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="p-4 text-center">
+                <h3 className="font-bold text-base md:text-lg" style={{ color: GREEN }}>
+                  {c.title}
+                </h3>
+                <p style={{ color: INK, fontSize: 14 }} className="mt-1">
+                  {c.body}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-10 mt-10 items-center">
+          <div className="flex justify-center">
+            <img
+              src={benefitsMockup}
+              alt="Recetario Vital mostrado en un teléfono móvil"
+              width={360}
+              height={520}
+              className="w-full max-w-[360px] h-auto rounded-2xl"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <ul className="space-y-4">
+            {[
+              "200+ recetas saludables clasificadas por objetivo: azúcar, peso, energía y digestión",
+              "Sección especial para condiciones crónicas: qué comer y qué evitar según tu situación",
+              "Recetas familiares que toda la mesa come, sin versiones separadas",
+              "Plan de alimentación semanal incluido, adaptable a cualquier agenda",
+              "Guía de sustituciones para no renunciar a los sabores que amas",
+              "Ingredientes de mercado popular, sin costos adicionales",
+              "PDF descargable, acceso inmediato, disponible en cualquier dispositivo",
+            ].map((b) => (
+              <li key={b} className="flex gap-3 items-start">
+                <span
+                  className="flex-shrink-0 w-7 h-7 mt-0.5 rounded-full flex items-center justify-center font-bold text-white text-sm"
+                  style={{ backgroundColor: GREEN }}
+                >
+                  ✓
+                </span>
+                <p style={{ color: INK, fontSize: 16 }} className="leading-relaxed">
+                  {b}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- TESTIMONIALS ---------------- */
+function Testimonials() {
+  const list = [
+    {
+      quote:
+        "Quienes tenemos el azúcar alta vivimos en constante estrés por no saber qué hacer. El Recetario Vital te da una guía para no sacrificar el placer de comer, cuidando tu salud.",
+      name: "Cristian Ortiz",
+      city: "Lima",
+      img: testimonialCristian,
+    },
+    {
+      quote:
+        "Cuando te dicen que tienes el azúcar alta entras en modo alerta. Si le sumas que rara vez te dicen qué hacer, una ayuda como el Recetario Vital te da más que un alivio. Por eso lo recomiendo.",
+      name: "Lorena Rodríguez",
+      city: "Ciudad de México",
+      img: testimonialLorena,
+    },
+    {
+      quote:
+        "Cuando te diagnostican con diabetes sentís que nada volverá a ser como antes. Pero cuando encuentras una herramienta como el Recetario Vital, te das cuenta que podés seguir llevando una vida normal.",
+      name: "Carlos Martínez",
+      city: "La Plata",
+      img: testimonialCarlos,
+    },
+    {
+      quote:
+        "Entendí que los cambios también son para bien. Creí que jamás volvería a disfrutar del buen comer, pero con el Recetario Vital me di cuenta que solo debía hacer unos ajustes más sencillos de lo que pensaba.",
+      name: "Ligia Gutiérrez",
+      city: "Bogotá",
+      img: testimonialLigia,
+    },
+  ];
+  return (
+    <section className="px-5 py-16 md:py-24" style={{ backgroundColor: CREAM }}>
+      <div className="max-w-5xl mx-auto">
+        <SectionLabel>Testimonios</SectionLabel>
+        <Heading>Lo que dicen quienes ya cambiaron su alimentación</Heading>
+        <div className="grid md:grid-cols-2 gap-6 mt-10">
+          {list.map((t) => (
+            <div
+              key={t.name}
+              className="bg-white rounded-2xl p-6 shadow-sm"
+              style={{ border: `1px solid ${GREEN}20` }}
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <img
+                  src={t.img}
+                  alt={`Foto de ${t.name}`}
+                  width={72}
+                  height={72}
+                  className="rounded-full object-cover"
+                  style={{ width: 72, height: 72 }}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div>
+                  <p className="font-bold" style={{ color: GREEN, fontSize: 16 }}>
+                    {t.name}
+                  </p>
+                  <p className="text-sm" style={{ color: INK, opacity: 0.7 }}>
+                    {t.city}
+                  </p>
+                </div>
+              </div>
+              <p style={{ color: INK, fontSize: 16 }} className="italic leading-relaxed">
+                “{t.quote}”
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -364,57 +445,58 @@ function Bonuses() {
       tag: "🎁 BONO 1",
       emoji: "🚦",
       title: "El Semáforo Alimenticio",
-      body: "Sabé en segundos qué alimentos te ayudan y cuáles te frenan, sea cual sea tu objetivo: azúcar, peso, energía o inflamación. Pégalo en tu nevera y úsalo todos los días.",
-      value: "$19 USD",
+      body: "La guía visual que te dice en segundos qué alimentos te ayudan y cuáles te dañan. Como tener un nutricionista silencioso 24/7.",
+      value: "$15 USD",
     },
     {
       tag: "🎁 BONO 2",
-      emoji: "🛒",
-      title: "Mercado Inteligente",
-      body: "Tu lista de compras mensual lista para llevar al mercado desde el celular. Con sustitutos inteligentes para que siempre tengas opciones saludables sin salirte del presupuesto.",
-      value: "$14 USD",
+      emoji: "🥑",
+      title: "Keto Fácil",
+      body: "Guía de inicio rápido para la alimentación cetogénica antiinflamatoria. Todo lo que necesitas para empezar sin confusión, sin hambre y sin errores.",
+      value: "$17 USD",
     },
     {
       tag: "🎁 BONO 3",
-      emoji: "📅",
-      title: "Plan de Rescate de 7 Días",
-      body: "Tu primera semana completamente planificada para que tu cuerpo empiece a sentir el cambio desde el día uno. Sin adivinar, solo seguir.",
-      value: "$24 USD",
-    },
-    {
-      tag: "🎁 BONO 4",
-      emoji: "🍫",
-      title: "SOS Antojos",
-      body: "10 recetas express para los momentos de crisis, antojo o visita inesperada. Listas en 10 minutos y que no arruinan tu progreso.",
-      value: "$24 USD",
+      emoji: "💧",
+      title: "Detox Natural",
+      body: "21 licuados y aguas infusionadas para desinflamar y depurar tu cuerpo desde adentro. El complemento perfecto para potenciar tu alimentación diaria.",
+      value: "$25 USD",
     },
   ];
   return (
     <section className="px-5 py-16 md:py-24" style={{ backgroundColor: CREAM }}>
       <div className="max-w-5xl mx-auto">
         <SectionLabel>Bonos exclusivos — solo por hoy</SectionLabel>
-        <Heading>Tu compra incluye 4 bonos exclusivos — gratis</Heading>
-        <p className="text-center text-lg mb-10" style={{ color: INK }}>
-          Valorados en <strong>$81 USD</strong>. Tuyos sin costo adicional.
+        <Heading>
+          Con tu Recetario Vital lleva 3 bonos exclusivos — Sin costo adicional
+        </Heading>
+        <p
+          className="text-center mb-10"
+          style={{ color: INK, fontSize: 18 }}
+        >
+          Valorados en <strong>$57 USD</strong>. Tuyos GRATIS hoy.
         </p>
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-3 gap-5">
           {bonuses.map((b) => (
             <div
               key={b.title}
-              className="bg-white rounded-2xl p-6 shadow-sm"
+              className="bg-white rounded-2xl p-6 shadow-sm flex flex-col"
               style={{ border: `1px solid ${GREEN}20` }}
             >
               <span
-                className="inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3"
+                className="inline-block self-start text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3"
                 style={{ backgroundColor: TERRACOTTA, color: "#fff" }}
               >
                 {b.tag}
               </span>
-              <h3 className="font-display font-bold text-xl mb-2" style={{ color: GREEN }}>
+              <h3
+                className="font-display font-bold text-xl mb-2"
+                style={{ color: GREEN }}
+              >
                 <span className="mr-2">{b.emoji}</span>
                 {b.title}
               </h3>
-              <p style={{ color: INK }} className="mb-3">
+              <p style={{ color: INK, fontSize: 16 }} className="mb-4 flex-1">
                 {b.body}
               </p>
               <p className="text-sm font-semibold" style={{ color: GREEN }}>
@@ -422,14 +504,14 @@ function Bonuses() {
                 <span className="line-through text-neutral-500 font-normal">
                   {b.value}
                 </span>{" "}
-                <span style={{ color: TERRACOTTA }}>HOY: GRATIS</span>
+                <span style={{ color: TERRACOTTA }}>→ GRATIS HOY</span>
               </p>
             </div>
           ))}
         </div>
 
         <div className="mt-12">
-          <CTAButton />
+          <CTAButton label="QUIERO MI RECETARIO + LOS 3 BONOS POR $15 USD →" />
           <CTAMicrocopy />
         </div>
       </div>
@@ -441,10 +523,9 @@ function Bonuses() {
 function Pricing() {
   const valueRows = [
     { item: "Recetario Vital — 200+ recetas", value: "$35 USD" },
-    { item: "Bono #1 — 🚦 El Semáforo Alimenticio", value: "$19 USD" },
-    { item: "Bono #2 — 🛒 Mercado Inteligente", value: "$14 USD" },
-    { item: "Bono #3 — 📅 Plan de Rescate de 7 Días", value: "$24 USD" },
-    { item: "Bono #4 — 🍫 SOS Antojos", value: "$24 USD" },
+    { item: "Bono 1 — 🚦 El Semáforo Alimenticio", value: "$15 USD" },
+    { item: "Bono 2 — 🥑 Keto Fácil", value: "$17 USD" },
+    { item: "Bono 3 — 💧 Detox Natural", value: "$25 USD" },
   ];
   return (
     <section className="px-5 py-16 md:py-24" style={{ backgroundColor: GREEN }}>
@@ -452,9 +533,16 @@ function Pricing() {
         <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] mb-4 text-white/80">
           Tu inversión hoy
         </p>
-        <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight mb-8 text-white">
-          Todo esto, por menos de lo que cuesta una cena fuera
+        <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight mb-6 text-white">
+          Tu inversión hoy
         </h2>
+        <p
+          className="mx-auto mb-8 text-white/90"
+          style={{ fontSize: 18, maxWidth: 620 }}
+        >
+          Por una inversión mínima, muy inferior al costo de una consulta médica
+          o con un nutricionista, llevas hoy tu Recetario Vital:
+        </p>
 
         {/* Value table */}
         <div
@@ -462,80 +550,77 @@ function Pricing() {
           style={{
             backgroundColor: "rgba(255,255,255,0.08)",
             border: "1px solid rgba(255,255,255,0.2)",
-            maxWidth: 520,
+            maxWidth: 560,
           }}
         >
           {valueRows.map((r) => (
             <div
               key={r.item}
               className="flex justify-between gap-4 py-3 border-b border-white/10 last:border-0"
+              style={{ fontSize: 16 }}
             >
               <span className="text-white/90">{r.item}</span>
               <span className="text-white font-semibold">{r.value}</span>
             </div>
           ))}
-          <div className="flex justify-between gap-4 pt-4 mt-2 border-t-2 border-white/30">
-            <span className="text-white font-bold">Valor total</span>
-            <span className="text-white font-bold">$116 USD</span>
+          <div
+            className="flex justify-between gap-4 pt-4 mt-2 border-t-2 border-white/30"
+            style={{ fontSize: 18 }}
+          >
+            <span className="text-white font-bold">VALOR TOTAL</span>
+            <span className="text-white font-bold">$92 USD</span>
           </div>
         </div>
 
         {/* Crossed-out price */}
         <p
           className="text-gray-300 mb-2"
-          style={{ fontSize: 18, textDecoration: "line-through" }}
+          style={{ fontSize: 24, textDecoration: "line-through" }}
         >
-          $116 USD
+          $92 USD
         </p>
         <p className="text-white/80 mb-2 text-sm uppercase tracking-widest">
           Hoy solo
         </p>
         <p
-          className="text-white font-extrabold leading-none mb-6"
-          style={{ fontSize: "clamp(40px, 9vw, 56px)", fontWeight: 800 }}
+          className="text-white font-extrabold leading-none mb-4"
+          style={{ fontSize: "clamp(48px, 11vw, 72px)", fontWeight: 800 }}
         >
           $15 USD
         </p>
+        <p
+          className="text-white/90 mb-6 mx-auto"
+          style={{ fontSize: 16, maxWidth: 520 }}
+        >
+          Un solo pago. Tuyo de por vida. Con actualizaciones permanentes
+          incluidas.
+        </p>
 
-        {/* Inline urgency band */}
+        {/* Currency equivalency */}
+        <p
+          className="text-white/85 mb-6"
+          style={{ fontSize: 16 }}
+        >
+          ≈ $321 MXN · ≈ $56.404 COP
+          <br />
+          <span className="italic" style={{ color: CREAM, fontSize: 13 }}>
+            (El precio exacto se confirma en el checkout)
+          </span>
+        </p>
+
+        {/* Urgency band */}
         <div
-          className="mx-auto mb-6 text-white text-sm font-bold text-center"
+          className="mx-auto mb-8 text-white font-bold text-center"
           style={{
             backgroundColor: TERRACOTTA,
             borderRadius: 8,
-            padding: "10px 20px",
-            maxWidth: 520,
+            padding: "12px 20px",
+            maxWidth: 560,
+            fontSize: 16,
           }}
         >
-          ⚠️ ATENCIÓN: Este precio puede subir en cualquier momento. Asegura tu
-          acceso ahora por solo $15 USD
-        </div>
-
-        {/* Currency equivalencies card */}
-        <div
-          className="mx-auto mb-6 rounded-xl"
-          style={{
-            backgroundColor: "rgba(255,255,255,0.08)",
-            border: "1px solid rgba(255,255,255,0.2)",
-            padding: 24,
-            maxWidth: 480,
-          }}
-        >
-          <p className="text-white font-bold uppercase text-sm tracking-widest text-center mb-3">
-            También puedes verlo así:
-          </p>
-          <div className="text-white text-center" style={{ fontSize: 16, lineHeight: 2 }}>
-            <div>🇨🇴 $57.069 COP si estás en Colombia</div>
-            <div>🇦🇷 $23.940 ARS si estás en Argentina</div>
-            <div>🇲🇽 $317 MXN si estás en México</div>
-          </div>
-          <p
-            className="italic text-center mt-3"
-            style={{ color: CREAM, fontSize: 13 }}
-          >
-            ⚠️ Los valores en moneda local se actualizan automáticamente según
-            el tipo de cambio vigente.
-          </p>
+          ⏱️ Solo durante el lanzamiento: $15 USD — Precio especial para los
+          primeros 50 compradores.
         </div>
 
         {/* Secure payment card */}
@@ -545,10 +630,9 @@ function Pricing() {
             backgroundColor: "rgba(255,255,255,0.08)",
             border: "1px solid rgba(255,255,255,0.2)",
             padding: 24,
-            maxWidth: 520,
+            maxWidth: 560,
           }}
         >
-          {/* Hotmart trust badge */}
           <div className="flex justify-center mb-5">
             <div
               className="inline-flex flex-col items-center px-6 py-3 rounded-xl"
@@ -568,29 +652,22 @@ function Pricing() {
             </div>
           </div>
 
-          <p
-            className="text-white"
-            style={{ fontSize: 15, lineHeight: 1.8 }}
-          >
-            🔒 Pago 100% seguro procesado por{" "}
-            <strong className="text-white font-bold">Hotmart</strong>, la
-            plataforma de productos digitales más grande de América Latina. Tus
-            datos de pago están protegidos con encriptación SSL. Nosotros nunca
-            vemos ni almacenamos los datos de tu tarjeta.
+          <p className="text-white" style={{ fontSize: 16, lineHeight: 1.7 }}>
+            🔒 <strong>PAGO 100% SEGURO</strong>
+            <br />
+            Pago procesado por <strong>Hotmart</strong>, la plataforma de
+            productos digitales más grande de América Latina. Tus datos están
+            protegidos con encriptación SSL. Nunca almacenamos información de tu
+            tarjeta.
             <br />
             <br />
-            💳 Medios de pago disponibles: Tarjeta de crédito · Tarjeta de
-            débito · Mercado Pago · Entre otros más según tu país.
+            💳 Tarjeta de crédito · Débito · Mercado Pago
             <br />
-            <br />
-            📦 Descarga inmediata: Recibes acceso a tu Recetario Vital y los 4
-            bonos en menos de 2 minutos, directo en tu correo electrónico. Solo
-            debes seguir las instrucciones que te daremos en el mensaje que te
-            enviaremos.
+            📦 Acceso inmediato en menos de 2 minutos
           </p>
         </div>
 
-        <CTAButton />
+        <CTAButton label="QUIERO MI RECETARIO + LOS 3 BONOS POR $15 USD →" />
         <CTAMicrocopy />
 
         {/* Guarantee card */}
@@ -600,10 +677,9 @@ function Pricing() {
             backgroundColor: "rgba(255,255,255,0.06)",
             border: "2px solid rgba(255,255,255,0.25)",
             padding: 28,
-            maxWidth: 520,
+            maxWidth: 560,
           }}
         >
-          {/* Guarantee seal */}
           <div className="flex justify-center mb-5">
             <div className="flex flex-col items-center">
               <span className="text-white/90 text-[11px] uppercase tracking-[0.2em] mb-2">
@@ -634,38 +710,16 @@ function Pricing() {
             className="text-white font-bold text-center mb-3"
             style={{ fontSize: 18 }}
           >
-            Garantía Total e Incondicional — 7 días
+            ↩️ GARANTÍA INCONDICIONAL — 7 DÍAS
           </h3>
-          <p className="text-white" style={{ fontSize: 15, lineHeight: 1.8 }}>
-            Si en los próximos 7 días sientes que este recetario no es lo que
-            necesitabas, solicita la devolución directamente a través de{" "}
-            <strong className="text-white font-bold">Hotmart</strong> y te
-            devolvemos el 100% de tu dinero.
+          <p className="text-white" style={{ fontSize: 16, lineHeight: 1.7 }}>
+            Si en los próximos 7 días no es lo que esperabas, solicita la
+            devolución en <strong>Hotmart</strong> y te devolvemos el 100% de tu
+            dinero.
             <br />
-            Sin formularios complicados.
-            <br />
-            Sin preguntas incómodas.
-            <br />
-            Sin demoras.
+            Sin formularios. Sin preguntas. Sin demoras.
           </p>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- URGENCY (no CTA) ---------------- */
-function FinalUrgency() {
-  return (
-    <section className="px-5 py-16 md:py-24" style={{ backgroundColor: CREAM }}>
-      <div className="max-w-3xl mx-auto text-center">
-        <SectionLabel>Última llamada</SectionLabel>
-        <Heading>Hoy puedes elegir comer distinto</Heading>
-        <p className="text-lg md:text-xl" style={{ color: INK }}>
-          Cada día que postergas es un día más sintiéndote igual. Por solo{" "}
-          <strong>$15 USD</strong> tienes en tus manos un recurso que puede
-          acompañarte por años. Decide hoy darte ese regalo.
-        </p>
       </div>
     </section>
   );
@@ -680,7 +734,7 @@ function FAQ() {
     },
     {
       q: "¿Cuándo lo recibo después de pagar?",
-      a: "La descarga es inmediata. En menos de 2 minutos recibirás el acceso a tu correo electrónico junto con los 4 bonos.",
+      a: "La descarga es inmediata. En menos de 2 minutos recibirás el acceso a tu correo electrónico junto con los 3 bonos.",
     },
     {
       q: "¿Sirve si vivo fuera de LATAM?",
@@ -694,20 +748,10 @@ function FAQ() {
       q: "¿Qué pasa si no cumple mis expectativas?",
       a: (
         <>
-          Tienes 7 días completos para revisarlo con calma. Si por cualquier
-          razón —o sin ninguna razón— sientes que el Recetario Vital no era lo
-          que buscabas, solicita la devolución directamente en{" "}
-          <strong>Hotmart</strong> y te devolvemos el 100% de tu dinero en menos
-          de 48 horas.
-          <br />
-          Sin formularios largos.
-          <br />
-          Sin que tengas que explicar nada.
-          <br />
-          Sin discusiones.
-          <br />
-          Creemos tanto en este recetario que preferimos devolverte el dinero a
-          que te quedes con algo que no te sirva.
+          Tienes 7 días para revisarlo. Si por cualquier razón no estás
+          satisfecho, solicita la devolución en <strong>Hotmart</strong> y te
+          devolvemos el 100% en menos de 48 horas. Sin formularios. Sin
+          explicaciones. Sin discusiones.
         </>
       ),
     },
@@ -715,10 +759,9 @@ function FAQ() {
       q: "¿Es seguro pagar aquí?",
       a: (
         <>
-          Sí. El pago lo procesa <strong>Hotmart</strong>, la plataforma de
-          productos digitales líder en América Latina con más de 35 millones de
-          compradores. Tu información está protegida con encriptación de nivel
-          bancario. Nosotros nunca vemos ni almacenamos los datos de tu tarjeta.
+          Sí. El pago lo procesa <strong>Hotmart</strong>, líder en productos
+          digitales en América Latina con más de 35 millones de compradores. Tu
+          información tiene encriptación de nivel bancario.
         </>
       ),
     },
@@ -738,11 +781,14 @@ function FAQ() {
             >
               <AccordionTrigger
                 className="text-left font-bold hover:no-underline"
-                style={{ color: GREEN }}
+                style={{ color: GREEN, fontSize: 16 }}
               >
                 {f.q}
               </AccordionTrigger>
-              <AccordionContent style={{ color: INK }} className="text-base leading-relaxed">
+              <AccordionContent
+                style={{ color: INK, fontSize: 16 }}
+                className="leading-relaxed"
+              >
                 {f.a}
               </AccordionContent>
             </AccordionItem>
@@ -758,8 +804,11 @@ function Footer() {
   return (
     <footer className="px-5 py-10" style={{ backgroundColor: GREEN }}>
       <div className="max-w-5xl mx-auto text-center text-white/80 text-sm">
-        <p className="font-display text-2xl text-white mb-2">Raíz Saludable</p>
-        <p className="mb-2">© {new Date().getFullYear()} Raíz Saludable. Todos los derechos reservados.</p>
+        <p className="font-display text-2xl text-white mb-2">Recetario Vital</p>
+        <p className="mb-2">
+          © {new Date().getFullYear()} Recetario Vital. Todos los derechos
+          reservados.
+        </p>
         <p className="text-xs text-white/60 max-w-2xl mx-auto">
           Este sitio no forma parte del sitio web de Facebook o Facebook Inc.
           Adicionalmente, este sitio no es respaldado por Facebook de ninguna
@@ -770,19 +819,108 @@ function Footer() {
   );
 }
 
+/* ---------------- SOCIAL PROOF NOTIFICATIONS (native) ---------------- */
+function SocialProofToast() {
+  const messages = [
+    "Lorena de Ciudad de México acaba de obtener su Recetario Vital",
+    "Carlos de Buenos Aires acaba de obtener su Recetario Vital",
+    "María de Bogotá acaba de obtener su Recetario Vital",
+    "Pedro de Guadalajara acaba de obtener su Recetario Vital",
+  ];
+  const [index, setIndex] = useState(0);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    let hideTimer: ReturnType<typeof setTimeout> | undefined;
+    let nextTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const cycle = () => {
+      if (cancelled) return;
+      setVisible(true);
+      hideTimer = setTimeout(() => {
+        if (cancelled) return;
+        setVisible(false);
+        nextTimer = setTimeout(() => {
+          if (cancelled) return;
+          setIndex((i) => (i + 1) % messages.length);
+          cycle();
+        }, 30000 + Math.random() * 15000); // 30-45s
+      }, 4000);
+    };
+
+    const initial = setTimeout(cycle, 8000);
+    return () => {
+      cancelled = true;
+      clearTimeout(initial);
+      if (hideTimer) clearTimeout(hideTimer);
+      if (nextTimer) clearTimeout(nextTimer);
+    };
+  }, [messages.length]);
+
+  return (
+    <div
+      aria-live="polite"
+      style={{
+        position: "fixed",
+        bottom: 16,
+        left: 16,
+        zIndex: 50,
+        maxWidth: 320,
+        background: "#ffffff",
+        borderRadius: 12,
+        boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+        border: "1px solid rgba(0,0,0,0.06)",
+        padding: "12px 14px",
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        fontSize: 14,
+        color: INK,
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(12px)",
+        transition: "opacity 300ms ease, transform 300ms ease",
+        pointerEvents: visible ? "auto" : "none",
+      }}
+    >
+      <div
+        style={{
+          flexShrink: 0,
+          width: 36,
+          height: 36,
+          borderRadius: 8,
+          background: CREAM,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 18,
+        }}
+      >
+        📖
+      </div>
+      <div style={{ lineHeight: 1.35 }}>
+        <div style={{ fontWeight: 600, color: GREEN, fontSize: 13 }}>
+          ¡Nueva compra!
+        </div>
+        <div>{messages[index]}</div>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   return (
     <main>
       <Hero />
       <Pain />
-      <Solution />
-      <Benefits />
       <ScientificEvidence />
+      <Benefits />
+      <Testimonials />
       <Bonuses />
       <Pricing />
-      <FinalUrgency />
       <FAQ />
       <Footer />
+      <SocialProofToast />
     </main>
   );
 }
