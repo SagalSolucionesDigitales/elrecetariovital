@@ -512,7 +512,9 @@ function Bonuses() {
 
         <div className="mt-12">
           <CTAButton label="QUIERO MI RECETARIO + LOS 3 BONOS POR $15 USD →" />
-          <CTAMicrocopy />
+          <p className="mt-4 text-center text-sm text-neutral-500">
+            Acceso inmediato en menos de 2 minutos • PDF en español
+          </p>
         </div>
       </div>
     </section>
