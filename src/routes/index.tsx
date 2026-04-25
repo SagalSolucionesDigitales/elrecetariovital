@@ -663,7 +663,7 @@ function Pricing() {
             tarjeta.
             <br />
             <br />
-            💳 Tarjeta de crédito · Débito · Mercado Pago
+            💳 Tarjeta de crédito · Débito · Mercado Pago · PayPal, entre otros
             <br />
             📦 Acceso inmediato en menos de 2 minutos
           </p>
