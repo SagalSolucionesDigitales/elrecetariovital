@@ -69,8 +69,6 @@ export const Route = createRootRoute({
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;600;700&display=swap",
-        media: "print",
-        onLoad: "this.media='all'",
       },
     ],
     scripts: [
