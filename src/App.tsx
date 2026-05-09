@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import heroCover from "@/assets/hero-ebook-cover.webp";
+const heroCover = "/hero-ebook-cover.webp";
 import benefitsMockup from "@/assets/benefits-mockup.webp";
 import catDesayunos from "@/assets/cat-desayunos.webp";
 import catAlmuerzos from "@/assets/cat-almuerzos.webp";
