@@ -96,7 +96,7 @@ function Hero() {
 function Pain() {
   const items = [
     { pain: "Quieres preparar comidas saludables para tu familia pero no sabes cómo empezar o crees que es demasiado caro.", answer: "Cada receta fue creada con ingredientes accesibles, de bajo costo, que consigues en cualquier mercado local. Además incluye alternativas e ingredientes sustitutos para que siempre tengas opciones." },
-    { pain: "Tu médico te dijo que si no cambias tu alimentación, el diagnóstico empeorará.", answer: "Si te dijeron que tienes el azúcar alta y nadie te explicó qué comer ni por dónde empezar, el Recetario Vital es tu guía práctica para aprender a alimentarte sin depender de una consulta médica para cada decisión." },
+    { pain: "Tu médico te dijo que, si no cambias tu alimentación, eso 'insignificante' se puede convertir en algo realmente grave.", answer: "Nadie te explicó qué comer ni por dónde empezar para comer saludable y cuidar tu salud. El Recetario Vital es tu guía práctica para aprender a alimentarte sin depender de una consulta médica para cada decisión." },
     { pain: "Cocinas todos los días para tu familia pero en el fondo sabes que podría ser más nutritivo — y no siempre sabes cómo lograrlo sin que lo rechacen.", answer: "Vives con angustia permanente porque quieres cocinar sano para tu familia, pero entre los gustos de cada uno terminas con frustración porque al final siempre cocinas lo mismo. El Recetario Vital tiene recetas deliciosas que no solo ayudarán a cuidar la salud de tu familia, sino que harán que ellos te pidan que las prepares sin importar sus gustos." },
     { pain: "Te preocupa terminar como un familiar", answer: "La buena noticia es que en este momento tienes en tus manos una herramienta que ese familiar no tuvo: información concreta, recetas probadas y un plan claro para cuidar tu alimentación desde hoy." },
     { pain: "Temes llenarte de información genérica que no funcione", answer: "El Recetario Vital no tiene nada que ver con la información vacía que encuentras en internet. Tiene respaldo en evidencia nutricional y ha sido validado por personas reales que ya cambiaron su alimentación." },
@@ -142,7 +142,7 @@ function ScientificEvidence() {
         <Heading>¿Por qué funciona? La ciencia detrás de cada receta</Heading>
         <div className="mx-auto mt-6 mb-10 rounded-xl p-6" style={{ backgroundColor: CREAM, borderLeft: `6px solid ${TERRACOTTA}`, maxWidth: 760 }}>
           <p style={{ color: INK, fontSize: 16, lineHeight: 1.7 }}>
-            Una alimentación familiar equilibrada, basada en ingredientes naturales y recetas reales, es uno de los factores con mayor impacto en la prevención de enfermedades crónicas en el hogar. Estudios en nutrición familiar muestran que los patrones de alimentación del entorno directo influyen decisivamente en los hábitos de cada integrante — incluidas las personas con prediabetes o riesgo metabólico, quienes pueden estabilizar sus niveles de azúcar en sangre con cambios sostenidos en lo que come toda la familia.
+            Una alimentación familiar equilibrada, basada en ingredientes naturales y recetas reales, es uno de los factores con mayor impacto en la prevención de enfermedades crónicas en el hogar. Estudios en nutrición familiar demuestran que los patrones de alimentación del entorno directo influyen decisivamente en los hábitos de cada integrante — incluidas las personas con prediabetes, riesgo metabólico, colesterol, entre otras condiciones, quienes pueden estabilizar sus niveles con cambios sostenidos en lo que come toda la familia.
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-5 mt-6">
@@ -218,9 +218,9 @@ function Benefits() {
 function Testimonials() {
   const list = [
     { quote: "Como mamá siempre busco preparar lo mejor para mi familia. Con el Recetario Vital encontré las opciones que buscaba con todo lo que necesito: ingredientes que se consiguen fácil, a buen precio y para recetas que nos gustan a todos.", name: "Lorena Rodríguez", city: "Ciudad de México", img: testimonialLorena },
-    { quote: "Quienes tenemos el azúcar alta vivimos en constante estrés por no saber qué hacer. El Recetario Vital te da una guía para no sacrificar el placer de comer, cuidando tu salud.", name: "Cristian Ortiz", city: "Lima", img: testimonialCristian },
+    { quote: "Quienes tenemos el azúcar alta vivimos en constante estrés por no saber qué hacer. Desde que mi esposa cambió nuestra dieta, todos nos hemos beneficiado, pero especialmente yo que logré mantener controlados mis niveles de azúcar. El Recetario Vital te da una guía para no sacrificar el placer de comer, cuidando tu salud.", name: "Cristian Ortiz", city: "Lima", img: testimonialCristian },
     { quote: "La alimentación saludable siempre ha sido prioritaria para mí, por los antecedentes de salud de mi familia y porque quiero que mis hijos disfruten la buena comida, pero saludablemente. El Recetario Vital ha sido una ayuda fundamental para cumplir con ese propósito, lo recomiendo completamente.", name: "Ligia Gutiérrez", city: "Bogotá", img: testimonialLigia },
-    { quote: "Cuando te diagnostican con diabetes sentís que nada volverá a ser como antes. Pero cuando encuentras una herramienta como el Recetario Vital, te das cuenta que podés seguir llevando una vida normal.", name: "Carlos Martínez", city: "La Plata", img: testimonialCarlos },
+    { quote: "Cuando te diagnostican con diabetes sentís que nada volverá a ser como antes. Pero cuando encuentras una herramienta como el Recetario Vital, te das cuenta que podés seguir llevando una vida normal. Es ideal para que toda la familia se alimente saludablemente, cuide su salud y prevenga enfermedades.", name: "Carlos Martínez", city: "La Plata", img: testimonialCarlos },
   ];
   return (
     <section className="px-5 py-16 md:py-24" style={{ backgroundColor: CREAM }}>
