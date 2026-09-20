@@ -11,7 +11,8 @@ import bonoDetox from "@/assets/bono-detox.webp";
 import benefitCheckin from "@/assets/benefit-checkin.webp";
 import benefitPerfil from "@/assets/benefit-perfil.webp";
 import benefitPlan from "@/assets/benefit-plan.webp";
-import benefitPlato from "@/assets/benefit-plato.webp";
+import benefitPlatoFoto from "@/assets/benefit-plato-foto.webp";
+import benefitPlatoResultado from "@/assets/benefit-plato-resultado.webp";
 import benefitProgreso from "@/assets/benefit-progreso.webp";
 import testimonialCristian from "@/assets/testimonial-cristian.webp";
 import testimonialLorena from "@/assets/testimonial-lorena.webp";
@@ -226,7 +227,10 @@ function Benefits() {
     { img: benefitCheckin, alt: "Pantalla de inicio de Recetario Vital App con el aviso para registrar cómo te sientes hoy", title: "Check-in diario", body: "Haz seguimiento a tu condición de salud en menos de un minuto al día. Registras cómo estás y tus indicadores, y la app va ajustando tu plan contigo." },
     { img: benefitPerfil, alt: "Pantalla de perfil de salud de Recetario Vital App con país, condición, nivel de glucosa y restricciones", title: "Perfil de salud a tu medida", body: "Según tu país, tu condición de salud (eliges la que corresponde a tu cuerpo: prediabetes o diabetes, cardiovascular, síndrome metabólico o control de peso), tus indicadores médicos y los alimentos que evitas." },
     { img: benefitPlan, alt: "Pantalla del plan semanal de Recetario Vital App con desayuno, almuerzo, cena, postre y lista de compras", title: "Plan de alimentación semanal personalizado", body: "Armado de acuerdo con tu perfil de salud, tu presupuesto, tu tiempo disponible para cocinar y la cantidad de personas en casa — con lista de compras para organizar tu semana." },
-    { img: benefitPlato, alt: "Pantalla Analiza tu plato de Recetario Vital App para fotografiar tu comida", title: "Análisis de platos por fotografía", body: "Toma una foto a tu plato y sabe al instante qué tan bien encaja con tu perfil, para que siempre estés seguro con tus alimentos, en casa o fuera." },
+    { shots: [
+      { img: benefitPlatoFoto, w: 794, h: 1580, alt: "Pantalla Analiza tu plato de Recetario Vital App con la foto de un plato de pollo con arroz y patatas lista para analizar", caption: "1. Fotografías tu plato" },
+      { img: benefitPlatoResultado, w: 794, h: 1594, alt: "Resultado del análisis en Recetario Vital App: calorías, carbohidratos, índice glucémico y un consejo para adaptar el plato a tu condición", caption: "2. Recibes tu análisis" },
+    ], title: "Análisis de platos por fotografía", body: "Toma una foto a tu plato y sabe al instante qué tan bien encaja con tu perfil, para que siempre estés seguro con tus alimentos, en casa o fuera." },
     { img: benefitProgreso, alt: "Pantalla Mi progreso de Recetario Vital App con el check-in del día y el botón para descargar el informe en PDF", title: "Tabla de progreso e informe para tu médico", body: "Mira tu evolución semana a semana y descarga un informe detallado para llevarlo a tu próxima consulta." },
   ];
   return (
@@ -237,8 +241,17 @@ function Benefits() {
         <div className="mt-12 md:mt-16 space-y-14 md:space-y-20">
           {items.map((b, i) => (
             <div key={b.title} className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
-              <div className={`flex justify-center ${i % 2 === 1 ? "md:order-2" : ""}`}>
-                <PhoneFrame src={b.img} alt={b.alt} maxWidth={300} />
+              <div className={`flex justify-center ${b.shots ? "gap-3 sm:gap-5 items-start" : ""} ${i % 2 === 1 ? "md:order-2" : ""}`}>
+                {b.shots ? (
+                  b.shots.map((s) => (
+                    <div key={s.caption} className="flex-1 flex flex-col items-center" style={{ maxWidth: 220 }}>
+                      <PhoneFrame src={s.img} alt={s.alt} maxWidth={220} width={s.w} height={s.h} />
+                      <p className="mt-3 text-center text-xs sm:text-sm font-semibold" style={{ color: GREEN }}>{s.caption}</p>
+                    </div>
+                  ))
+                ) : (
+                  <PhoneFrame src={b.img} alt={b.alt} maxWidth={300} />
+                )}
               </div>
               <div className={`text-center md:text-left ${i % 2 === 1 ? "md:order-1" : ""}`}>
                 <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: TERRACOTTA }}>{`Beneficio ${i + 1}`}</p>
