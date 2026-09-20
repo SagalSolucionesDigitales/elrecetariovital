@@ -1,5 +1,5 @@
 const CHECKOUT_URL =
-  "https://pay.hotmart.com/K105081446B?checkoutMode=10&bid=1776809946257";
+  "https://pay.hotmart.com/K107577518K?checkoutMode=10&bid=1789871331796";
 
 declare global {
   interface Window {
@@ -25,7 +25,7 @@ export function CTAButton({
             window.fbq("track", "InitiateCheckout");
           }
         }}
-        className="inline-flex items-center justify-center w-full md:max-w-[520px] text-center text-white font-bold uppercase tracking-wide rounded-full px-8 py-4"
+        className="inline-flex items-center justify-center w-full md:max-w-[640px] text-center text-white font-bold uppercase tracking-wide rounded-full px-8 py-4"
         style={{
           backgroundColor: "#C4622D",
           boxShadow: "0 6px 24px rgba(196,98,45,0.45)",
