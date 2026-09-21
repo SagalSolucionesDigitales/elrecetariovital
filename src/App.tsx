@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-const heroCover = "/hero-app-cover.webp";
+const heroCover = "/hero-app-920.webp";
+const heroCoverSet = "/hero-app-640.webp 640w, /hero-app-920.webp 920w";
 import catDesayunos from "@/assets/cat-desayunos.webp";
 import catAlmuerzos from "@/assets/cat-almuerzos.webp";
 import catCenas from "@/assets/cat-cenas.webp";
@@ -68,9 +69,11 @@ function Hero() {
         <div className="order-1 md:order-2 flex justify-center">
           <img
             src={heroCover}
+            srcSet={heroCoverSet}
+            sizes="(min-width: 768px) 460px, min(380px, calc(100vw - 40px))"
             alt="Recetario Vital App — mano sosteniendo un celular que muestra el plan de comidas del día"
-            width={1084}
-            height={1451}
+            width={920}
+            height={1231}
             className="w-full max-w-[380px] md:max-w-[460px] h-auto rounded-2xl shadow-2xl"
             loading="eager"
             fetchPriority="high"
@@ -453,7 +456,7 @@ function Footer() {
     <footer className="px-5 py-10" style={{ backgroundColor: GREEN }}>
       <div className="max-w-5xl mx-auto text-center text-white/80 text-sm">
         <p className="font-display text-2xl text-white mb-2">Recetario Vital App</p>
-        <p className="mb-2">© {new Date().getFullYear()} Recetario Vital App. Todos los derechos reservados.</p>
+        <p className="mb-2" suppressHydrationWarning>© {new Date().getFullYear()} Recetario Vital App. Todos los derechos reservados.</p>
         <p className="text-xs text-white/60 max-w-2xl mx-auto">
           Este sitio no forma parte del sitio web de Facebook o Facebook Inc. Adicionalmente, este sitio no es respaldado por Facebook de ninguna manera. FACEBOOK es una marca registrada de FACEBOOK, Inc.
         </p>
