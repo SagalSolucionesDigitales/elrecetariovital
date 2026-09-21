@@ -367,12 +367,9 @@ function Pricing() {
           ))}
           <div className="flex justify-between gap-4 pt-4 mt-2 border-t-2 border-white/30" style={{ fontSize: 18 }}>
             <span className="text-white font-bold">VALOR TOTAL</span>
-            <span className="text-white font-bold">$117 USD</span>
+            <span className="text-gray-300 font-bold" style={{ textDecoration: "line-through" }}>$117 USD</span>
           </div>
         </div>
-        <p className="text-gray-300 mb-2" style={{ fontSize: 24, textDecoration: "line-through" }}>$117 USD</p>
-        <p className="text-white/80 mb-2 text-sm uppercase tracking-widest">Hoy solo</p>
-        <p className="text-white font-extrabold leading-none mb-4" style={{ fontSize: "clamp(48px, 11vw, 72px)", fontWeight: 800 }}>$29.90 USD</p>
         <p className="text-white/90 mb-6 mx-auto" style={{ fontSize: 16, maxWidth: 520 }}>
           Un solo pago. Sin suscripción. Tuya de por vida, con actualizaciones permanentes incluidas.
         </p>
