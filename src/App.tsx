@@ -350,11 +350,15 @@ function Pricing() {
     <section className="px-5 py-16 md:py-24" style={{ backgroundColor: GREEN }}>
       <div className="max-w-3xl mx-auto text-center">
         <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] mb-4 text-white/80">Tu inversión hoy</p>
-        <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight mb-6 text-white">Tu inversión hoy</h2>
+        <h2 className="font-extrabold leading-none text-white" style={{ fontSize: "clamp(52px, 13vw, 88px)", fontWeight: 800 }}>$29.90 USD</h2>
+        <p className="mb-8 mt-3 text-sm md:text-base font-semibold uppercase tracking-[0.2em]" style={{ color: "rgba(255,215,150,0.95)" }}>Precio único</p>
         <p className="mx-auto mb-8 text-white/90" style={{ fontSize: 18, maxWidth: 620 }}>
           Por una inversión mínima, muy inferior al costo de una consulta médica o con un nutricionista, llevas hoy tu Recetario Vital App:
         </p>
         <div className="rounded-2xl p-6 md:p-8 mb-10 text-left mx-auto" style={{ backgroundColor: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.2)", maxWidth: 560 }}>
+          <p className="text-center text-white font-bold leading-snug pb-4 mb-2 border-b border-white/20" style={{ fontSize: 19 }}>
+            Este es el valor <span style={{ color: "rgba(255,215,150,0.95)" }}>REAL</span> de la oferta completa
+          </p>
           {valueRows.map((r) => (
             <div key={r.item} className="flex justify-between gap-4 py-3 border-b border-white/10 last:border-0" style={{ fontSize: 16 }}>
               <span className="text-white/90">{r.item}</span>
@@ -373,7 +377,7 @@ function Pricing() {
           Un solo pago. Sin suscripción. Tuya de por vida, con actualizaciones permanentes incluidas.
         </p>
         <p className="text-white/85 mb-6" style={{ fontSize: 16 }}>
-          ≈ 35 EUR · ≈ $631 MXN · ≈ $94.456 COP<br />
+          ≈ 35 EUR · ≈ $631 MXN · ≈ $99.652 COP<br />
           <span className="italic" style={{ color: CREAM, fontSize: 13 }}>(El precio final, con los impuestos de tu país, se confirma en el checkout)</span>
         </p>
         <div className="mx-auto mb-8 text-white font-bold text-center" style={{ backgroundColor: TERRACOTTA, borderRadius: 8, padding: "12px 20px", maxWidth: 560, fontSize: 16 }}>
