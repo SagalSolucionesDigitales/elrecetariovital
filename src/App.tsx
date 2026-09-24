@@ -377,7 +377,7 @@ function Pricing() {
           Un solo pago. Sin suscripción. Tuya de por vida, con actualizaciones permanentes incluidas.
         </p>
         <p className="text-white/85 mb-6" style={{ fontSize: 16 }}>
-          ≈ 35 EUR · ≈ $631 MXN · ≈ $99.652 COP<br />
+          ≈ 35 EUR · ≈ $652 MXN · ≈ $106.000 COP<br />
           <span className="italic" style={{ color: CREAM, fontSize: 13 }}>(El precio final, con los impuestos de tu país, se confirma en el checkout)</span>
         </p>
         <div className="mx-auto mb-8 text-white font-bold text-center" style={{ backgroundColor: TERRACOTTA, borderRadius: 8, padding: "12px 20px", maxWidth: 560, fontSize: 16 }}>
