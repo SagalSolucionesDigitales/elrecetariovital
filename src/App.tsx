@@ -91,10 +91,10 @@ function Hero() {
             className="font-display text-4xl md:text-6xl font-bold leading-[1.05] mb-5"
             style={{ color: GREEN }}
           >
-            Come rico, come bien. Sin miedo y sin complicaciones.
+            Mejora tu alimentación, tus niveles de glucosa y tus indicadores SIN dejar de comer lo que te gusta.
           </h1>
           <p className="text-lg md:text-xl mb-6" style={{ color: INK }}>
-            Si tienes disparada la glucosa y quieres cuidar tu alimentación, Recetario Vital App te muestra cómo preparar comidas deliciosas, económicas, fáciles y personalizadas para ti — con ingredientes que ya conoces y en poco tiempo. Sin ingredientes raros. Sin planes imposibles. Sin sacrificar el placer de comer.
+            Vuelve a sentir el placer de comer los postres y todo lo que más te gusta SIN miedo y SIN riesgos, con un sistema ADAPTADO A TI, a tu cuerpo y sus características, para que JAMÁS vuelvas a sentir que te quitaron la comida rica.
           </p>
           <p className="mt-6 text-sm text-neutral-600 text-center md:text-left">
             Acceso Inmediato • App web y móvil lista para instalar en tu dispositivo • Solo <strong>$29.90 USD</strong> • <strong>PAGO ÚNICO. Sin suscripciones</strong>
@@ -377,7 +377,7 @@ function Pricing() {
           Un solo pago. Sin suscripción. Tuya de por vida, con actualizaciones permanentes incluidas.
         </p>
         <p className="text-white/85 mb-6" style={{ fontSize: 16 }}>
-          ≈ 35 EUR · ≈ $652 MXN · ≈ $106.000 COP<br />
+          ≈ 35 EUR · ≈ $661 MXN · ≈ $106.000 COP<br />
           <span className="italic" style={{ color: CREAM, fontSize: 13 }}>(El precio final, con los impuestos de tu país, se confirma en el checkout)</span>
         </p>
         <div className="mx-auto mb-8 text-white font-bold text-center" style={{ backgroundColor: TERRACOTTA, borderRadius: 8, padding: "12px 20px", maxWidth: 560, fontSize: 16 }}>
