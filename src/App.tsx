@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 const heroCover = "/hero-app-920.webp";
 const heroCoverSet = "/hero-app-640.webp 640w, /hero-app-920.webp 920w";
 import bonoCamila from "@/assets/bono-camila.webp";
@@ -11,10 +10,6 @@ import benefitPlan from "@/assets/benefit-plan.webp";
 import benefitPlatoFoto from "@/assets/benefit-plato-foto.webp";
 import benefitPlatoResultado from "@/assets/benefit-plato-resultado.webp";
 import benefitProgreso from "@/assets/benefit-progreso.webp";
-import testimonialCristian from "@/assets/testimonial-cristian.webp";
-import testimonialLorena from "@/assets/testimonial-lorena.webp";
-import testimonialCarlos from "@/assets/testimonial-carlos.webp";
-import testimonialLigia from "@/assets/testimonial-ligia.webp";
 import { CTAButton } from "@/components/CTAButton";
 import {
   Accordion,
@@ -233,37 +228,6 @@ function Benefits() {
   );
 }
 
-function Testimonials() {
-  const list = [
-    { quote: "Quienes tenemos el azúcar alta vivimos en constante estrés por no saber qué hacer y cómo evitar llegar a una condición crítica. En eso, Recetario Vital App, te da una guía para no sacrificar el placer de comer, pero cuidando tu salud.", name: "Cristian Ortiz", city: "Lima", img: testimonialCristian },
-    { quote: "Cuando te dicen que tienes el azúcar alta entras en modo alerta. Si le sumas que rara vez te dicen qué hacer o cómo hacerlo y que es difícil acceder a un nutricionista, pues una ayuda como Recetario Vital App te da más que un alivio. Por eso la recomiendo.", name: "Lorena Rodríguez", city: "CDMX", img: testimonialLorena },
-    { quote: "Cuando te diagnostican con diabetes, hipertensión o cualquier enfermedad parecida, sentís que nada volverá a ser como antes y es muy triste. Pero cuando encontrás una herramienta como Recetario Vital App, no solo aprendés a comer mejor, sino que te das cuenta que podés seguir llevando una vida normal.", name: "Carlos Martínez", city: "La Plata", img: testimonialCarlos },
-    { quote: "Entendí que los cambios también son para bien. Creí que jamás volvería a disfrutar del buen comer, pero con Recetario Vital App me di cuenta que solo debía hacer unos ajustes más sencillos de lo que pensaba.", name: "Ligia Gutiérrez", city: "Bogotá", img: testimonialLigia },
-  ];
-  return (
-    <section className="px-5 py-16 md:py-24" style={{ backgroundColor: CREAM }}>
-      <div className="max-w-5xl mx-auto">
-        <SectionLabel>Testimonios</SectionLabel>
-        <Heading>Lo que dicen quienes YA reciben los beneficios de Recetario Vital App</Heading>
-        <div className="grid md:grid-cols-2 gap-6 mt-10">
-          {list.map((t) => (
-            <div key={t.name} className="bg-white rounded-2xl p-6 shadow-sm" style={{ border: `1px solid ${GREEN}20` }}>
-              <div className="flex items-center gap-4 mb-4">
-                <img src={t.img} alt={`Foto de ${t.name}`} width={72} height={72} className="rounded-full object-cover" style={{ width: 72, height: 72 }} loading="lazy" decoding="async" />
-                <div>
-                  <p className="font-bold" style={{ color: GREEN, fontSize: 16 }}>{t.name}</p>
-                  <p className="text-sm" style={{ color: INK, opacity: 0.7 }}>{t.city}</p>
-                </div>
-              </div>
-              <p style={{ color: INK, fontSize: 16 }} className="italic leading-relaxed">"{t.quote}"</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Bonuses() {
   const bonuses = [
     { img: bonoCamila, w: 789, h: 1600, alt: "Chat con Camila, la coach de nutrición de Recetario Vital App", tag: "🎁 BONO 1", title: "Coach Camila", body: "Tu asistente virtual de nutrición personalizado, que te acompaña y te guía 24/7.", value: "25 €" },
@@ -272,16 +236,16 @@ function Bonuses() {
     { img: bonoDetox, w: 480, h: 973, alt: "Guía Detox Natural de Recetario Vital con licuados y aguas infusionadas", tag: "🎁 BONO 4", title: "Detox Natural", body: "Tu aliado líquido en el camino hacia tu salud y bienestar.", value: "10 €" },
   ];
   return (
-    <section className="px-5 py-16 md:py-24 bg-white">
+    <section className="px-5 py-16 md:py-24" style={{ backgroundColor: CREAM }}>
       <div className="max-w-5xl mx-auto">
         <SectionLabel>Bonos exclusivos — solo por hoy</SectionLabel>
-        <Heading>Con tu Recetario Vital App lleva 4 bonos exclusivos — Sin costo adicional</Heading>
+        <Heading>Con tu Recetario Vital App lleva 4 bonos exclusivos — Sin coste adicional</Heading>
         <p className="text-center mb-10" style={{ color: INK, fontSize: 18 }}>
           Valorados en <strong>67 €</strong>. Tuyos GRATIS hoy.
         </p>
         <div className="grid md:grid-cols-2 gap-5">
           {bonuses.map((b) => (
-            <div key={b.title} className="rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 shadow-sm" style={{ backgroundColor: CREAM, border: `1px solid ${GREEN}20` }}>
+            <div key={b.title} className="rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 shadow-sm bg-white" style={{ border: `1px solid ${GREEN}20` }}>
               <div className="flex-shrink-0 w-full flex justify-center sm:w-auto">
                 <PhoneFrame src={b.img} alt={b.alt} maxWidth={170} width={b.w} height={b.h} />
               </div>
@@ -320,7 +284,7 @@ function Pricing() {
         <h2 className="font-extrabold leading-none text-white" style={{ fontSize: "clamp(52px, 13vw, 88px)", fontWeight: 800 }}>35,09 €</h2>
         <p className="mb-8 mt-3 text-sm md:text-base font-semibold uppercase tracking-[0.2em]" style={{ color: "rgba(255,215,150,0.95)" }}>Precio único · IVA incluido</p>
         <p className="mx-auto mb-8 text-white/90" style={{ fontSize: 18, maxWidth: 620 }}>
-          Por una inversión mínima, muy inferior al costo de una consulta médica o con un nutricionista, llevas hoy tu Recetario Vital App:
+          Por una inversión mínima, muy inferior al coste de una consulta médica o con un nutricionista, llevas hoy tu Recetario Vital App:
         </p>
         <div className="rounded-2xl p-6 md:p-8 mb-10 text-left mx-auto" style={{ backgroundColor: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.2)", maxWidth: 560 }}>
           <p className="text-center text-white font-bold leading-snug pb-4 mb-2 border-b border-white/20" style={{ fontSize: 19 }}>
@@ -356,7 +320,7 @@ function Pricing() {
           <p className="text-white" style={{ fontSize: 16, lineHeight: 1.7 }}>
             🔒 <strong>PAGO 100% SEGURO</strong><br />
             Pago procesado por <strong>Hotmart</strong>, líder en América Latina y España en productos digitales. Tus datos están protegidos con encriptación SSL. Nunca almacenamos información de tu tarjeta.<br /><br />
-            💳 Tarjeta de crédito · Débito · Mercado Pago · PayPal, entre otros<br />
+            💳 Tarjeta de crédito · Débito · PayPal, entre otros<br />
             📦 Acceso inmediato en menos de 2 minutos
           </p>
         </div>
@@ -389,7 +353,7 @@ function FAQ() {
     { q: "¿Cómo descargo mi app?", a: "Después de finalizar tu compra recibes un email con el enlace y las instrucciones de descarga en tu teléfono o dispositivo. Crea tu cuenta con el mismo correo que usaste en la compra." },
     { q: "¿Es difícil usar la app?", a: "Para nada. Es tan sencillo como enviar un mensaje por WhatsApp o llamar a tu hijo, a tu hija, a tu pareja o a un amigo. Recetario Vital App es tan fácil de usar que la dominarás en cuestión de horas." },
     { q: "¿Cuándo la recibo después de pagar?", a: "Inmediatamente después de finalizar tu compra." },
-    { q: "¿Sirve en mi país?", a: "Sí, la app funciona y se adapta a Latinoamérica y España." },
+    { q: "¿Sirve en mi país?", a: "Sí, la app funciona y se adapta a España." },
     { q: "¿Necesito experiencia cocinando?", a: "No. Las recetas están explicadas paso a paso, en un lenguaje sencillo. Si sabes hervir agua, puedes prepararlas." },
     { q: "¿Qué pasa si no cumple mis expectativas?", a: (<>Tienes 7 días para revisarla. Si por cualquier razón no estás satisfecho, solicita la devolución en <strong>Hotmart</strong> y te devolvemos el 100% en menos de 48 horas. Sin formularios. Sin explicaciones. Sin discusiones.</>) },
     { q: "¿Es seguro pagar aquí?", a: (<>Sí. El pago lo procesa <strong>Hotmart</strong>, líder en productos digitales en América Latina y España con más de 35 millones de compradores. Tu información tiene encriptación de nivel bancario.</>) },
@@ -426,53 +390,6 @@ function Footer() {
   );
 }
 
-function SocialProofToast() {
-  const messages = [
-    "Lorena de Ciudad de México acaba de obtener su Recetario Vital App",
-    "Carlos de Buenos Aires acaba de obtener su Recetario Vital App",
-    "María de Bogotá acaba de obtener su Recetario Vital App",
-    "Pedro de Guadalajara acaba de obtener su Recetario Vital App",
-  ];
-  const [index, setIndex] = useState(0);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    let cancelled = false;
-    let hideTimer: ReturnType<typeof setTimeout> | undefined;
-    let nextTimer: ReturnType<typeof setTimeout> | undefined;
-    const cycle = () => {
-      if (cancelled) return;
-      setVisible(true);
-      hideTimer = setTimeout(() => {
-        if (cancelled) return;
-        setVisible(false);
-        nextTimer = setTimeout(() => {
-          if (cancelled) return;
-          setIndex((i) => (i + 1) % messages.length);
-          cycle();
-        }, 30000 + Math.random() * 15000);
-      }, 4000);
-    };
-    const initial = setTimeout(cycle, 8000);
-    return () => {
-      cancelled = true;
-      clearTimeout(initial);
-      if (hideTimer) clearTimeout(hideTimer);
-      if (nextTimer) clearTimeout(nextTimer);
-    };
-  }, [messages.length]);
-
-  return (
-    <div aria-live="polite" style={{ position: "fixed", bottom: 16, left: 16, zIndex: 50, maxWidth: 320, background: "#ffffff", borderRadius: 12, boxShadow: "0 8px 24px rgba(0,0,0,0.12)", border: "1px solid rgba(0,0,0,0.06)", padding: "12px 14px", display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: INK, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(12px)", transition: "opacity 300ms ease, transform 300ms ease", pointerEvents: visible ? "auto" : "none" }}>
-      <div style={{ flexShrink: 0, width: 36, height: 36, borderRadius: 8, background: CREAM, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>📖</div>
-      <div style={{ lineHeight: 1.35 }}>
-        <div style={{ fontWeight: 600, color: GREEN, fontSize: 13 }}>¡Nueva compra!</div>
-        <div>{messages[index]}</div>
-      </div>
-    </div>
-  );
-}
-
 export default function App() {
   return (
     <main>
@@ -480,12 +397,10 @@ export default function App() {
       <Pain />
       <Benefits />
       <ScientificEvidence />
-      <Testimonials />
       <Bonuses />
       <Pricing />
       <FAQ />
       <Footer />
-      <SocialProofToast />
     </main>
   );
 }
