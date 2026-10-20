@@ -177,3 +177,9 @@ main > footer {
   content-visibility: auto;
   contain-intrinsic-size: auto 1500px;
 }
+
+/* Antes de saltar a un ancla se pintan todas las secciones, para que la posición de destino sea la real. */
+.cv-off main > section,
+.cv-off main > footer {
+  content-visibility: visible;
+}

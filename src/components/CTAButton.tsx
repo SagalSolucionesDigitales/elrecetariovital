@@ -10,17 +10,34 @@ declare global {
 export function CTAButton({
   className = "",
   label = "QUIERO MI RECETARIO VITAL →",
+  href = CHECKOUT_URL,
 }: {
   className?: string;
   label?: string;
+  href?: string;
 }) {
+  const isAnchor = href.startsWith("#");
   return (
     <div className={`w-full flex justify-center ${className}`}>
       <a
-        href={CHECKOUT_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => {
+        href={href}
+        {...(isAnchor ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+        onClick={(e) => {
+          if (isAnchor) {
+            const target = document.getElementById(href.slice(1));
+            if (!target) return;
+            e.preventDefault();
+            document.documentElement.classList.add("cv-off");
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            // Las imágenes diferidas que cargan durante el recorrido desplazan el destino: se corrige al terminar.
+            const realign = () => {
+              if (Math.abs(target.getBoundingClientRect().top) > 4) target.scrollIntoView({ behavior: "smooth", block: "start" });
+            };
+            // Safari antiguo no emite scrollend.
+            if ("onscrollend" in window) window.addEventListener("scrollend", realign, { once: true });
+            else setTimeout(realign, 1500);
+            return;
+          }
           if (typeof window !== "undefined" && window.fbq) {
             window.fbq("track", "InitiateCheckout");
           }
