@@ -97,7 +97,7 @@ function Hero() {
           <p className="mt-5 text-sm text-neutral-600 text-center md:text-left">
             Pago único de <strong>35,09 € (IVA incluido)</strong> · Sin suscripciones · Acceso inmediato y de por vida desde tu móvil
           </p>
-          <CTAButton className="mt-6" href="#beneficios" label="QUIERO VER CÓMO FUNCIONA →" />
+          <CTAButton className="mt-6" href="#beneficios" label="CONOCE LO QUE TE OFRECE LA APP →" />
         </div>
       </div>
     </section>
@@ -197,8 +197,8 @@ function Benefits() {
   return (
     <section id="beneficios" className="px-5 py-16 md:py-24" style={{ backgroundColor: CREAM }}>
       <div className="max-w-5xl mx-auto">
-        <SectionLabel>Estos son los beneficios que te da la app</SectionLabel>
-        <Heading>Con la compra de tu app, accede a los siguientes…</Heading>
+        <SectionLabel>Obtén tu app HOY mismo y accede a los siguientes…</SectionLabel>
+        <Heading>Beneficios personalizados para ti:</Heading>
         <div className="mt-12 md:mt-16 space-y-14 md:space-y-20">
           {items.map((b, i) => (
             <div key={b.title} className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
@@ -222,7 +222,7 @@ function Benefits() {
             </div>
           ))}
         </div>
-        <CTAButton className="mt-14 md:mt-20" href="#precio" label="QUIERO MI APP POR 35,09 € →" />
+        <CTAButton className="mt-14 md:mt-20" href="#bonos" label="ESTÁS A UN SOLO PASO DE OBTENER TU APP – HAZ CLIC AQUÍ" />
       </div>
     </section>
   );
@@ -236,12 +236,16 @@ function Bonuses() {
     { img: bonoDetox, w: 480, h: 973, alt: "Guía Detox Natural de Recetario Vital con licuados y aguas infusionadas", tag: "🎁 BONO 4", title: "Detox Natural", body: "Tu aliado líquido en el camino hacia tu salud y bienestar.", value: "10 €" },
   ];
   return (
-    <section className="px-5 py-16 md:py-24" style={{ backgroundColor: CREAM }}>
+    <section id="bonos" className="px-5 py-16 md:py-24" style={{ backgroundColor: CREAM }}>
       <div className="max-w-5xl mx-auto">
         <SectionLabel>Bonos exclusivos — solo por hoy</SectionLabel>
-        <Heading>Con tu Recetario Vital App lleva 4 bonos exclusivos — Sin coste adicional</Heading>
+        <Heading>Con tu Recetario Vital App lleva 4 bonos exclusivos —{" "}
+          <span className="whitespace-nowrap px-2 rounded-lg" style={{ color: "#fff", backgroundColor: TERRACOTTA }}>Sin coste adicional</span>
+        </Heading>
         <p className="text-center mb-10" style={{ color: INK, fontSize: 18 }}>
-          Valorados en <strong>67 €</strong>. Tuyos GRATIS hoy.
+          Valorados en <strong>67 €</strong>. Tuyos{" "}
+          <span className="inline-block font-extrabold px-3 py-0.5 rounded-full align-middle" style={{ color: "#fff", backgroundColor: TERRACOTTA, fontSize: 20, letterSpacing: "0.05em" }}>GRATIS</span>{" "}
+          hoy.
         </p>
         <div className="grid md:grid-cols-2 gap-5">
           {bonuses.map((b) => (
@@ -254,7 +258,7 @@ function Bonuses() {
                 <h3 className="font-display font-bold text-xl mb-2" style={{ color: GREEN }}>{b.title}</h3>
                 <p style={{ color: INK, fontSize: 16 }} className="mb-4">{b.body}</p>
                 <p className="text-sm font-semibold" style={{ color: GREEN }}>
-                  Valor: <span className="line-through text-neutral-500 font-normal">{b.value}</span> <span style={{ color: TERRACOTTA }}>→ GRATIS HOY</span>
+                  Valor: <span className="line-through text-neutral-500 font-normal">{b.value}</span> <span className="font-extrabold" style={{ color: TERRACOTTA }}>→ GRATIS HOY</span>
                 </p>
               </div>
             </div>
